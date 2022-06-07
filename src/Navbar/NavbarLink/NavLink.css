@@ -1,0 +1,9 @@
+.NavLinks {
+  padding: 30px 150px;
+  border: 1px solid red;
+}
+
+.NavLink-logo {
+  display: flex;
+  justify-content: space-between;
+}
