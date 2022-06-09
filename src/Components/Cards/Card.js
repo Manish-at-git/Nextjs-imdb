@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import img from "./img.png";
 import "font-awesome/css/font-awesome.min.css";
 

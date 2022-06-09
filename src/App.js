@@ -3,6 +3,8 @@ import MoviePick from "./Components/MoviePick/MoviePick";
 import Navbar from "./Navbar/Navbar";
 import Card from "./Components/Cards/Card";
 import LP from "./Components/Cards/Card";
+import Slider from "./Components/Slider/Slider";
+import CarouselCard from "./Components/Slider/CarouselCard/CarouselCard";
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       {/* <MoviePick /> */}
       {/* <Card /> */}
       {/* <LP /> */}
+      {/* <Slider /> */}
+      <CarouselCard />
     </div>
   );
 }

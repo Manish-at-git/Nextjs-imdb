@@ -7,7 +7,6 @@ import { Carousel } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
-
 import Card from "../Cards/Card";
 
 import "./Slider.css";
@@ -28,34 +27,49 @@ function Slider() {
           <div className="MoviePick-Cards">
             <Carousel>
               <Carousel.Item>
-                <Card />
+                <div className="item">
+                  <Card />
+                </div>
               </Carousel.Item>
               <Carousel.Item>
-                <Card />
+                <div className="item">
+                  <Card />
+                </div>
               </Carousel.Item>
               <Carousel.Item>
-                <Card />
+                <div className="item">
+                  <Card />
+                </div>
               </Carousel.Item>
               <Carousel.Item>
-                <Card />
+                <div className="item">
+                  <Card />
+                </div>
               </Carousel.Item>
               <Carousel.Item>
-                <Card />
+                <div className="item">
+                  <Card />
+                </div>
               </Carousel.Item>
               <Carousel.Item>
-                <Card />
+                <div className="item">
+                  <Card />
+                </div>
               </Carousel.Item>
               <Carousel.Item>
-                <Card />
+                <div className="item">
+                  <Card />
+                </div>
               </Carousel.Item>
               <Carousel.Item>
-                <Card />
+                <div className="item">
+                  <Card />
+                </div>
               </Carousel.Item>
               <Carousel.Item>
-                <Card />
-              </Carousel.Item>
-              <Carousel.Item>
-                <Card />
+                <div className="item">
+                  <Card />
+                </div>
               </Carousel.Item>
             </Carousel>
           </div>

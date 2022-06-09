@@ -47,15 +47,6 @@ function MoviePick() {
               <Carousel.Item>
                 <Card />
               </Carousel.Item>
-              <Carousel.Item>
-                <Card />
-              </Carousel.Item>
-              <Carousel.Item>
-                <Card />
-              </Carousel.Item>
-              <Carousel.Item>
-                <Card />
-              </Carousel.Item>
             </Carousel>
           </div>
         </div>
