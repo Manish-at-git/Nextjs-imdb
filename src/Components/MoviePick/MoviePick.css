@@ -1,0 +1,17 @@
+.MoviePick {
+  padding: 30px;
+  background-color: #000;
+  color: #fff;
+  height: 100vh;
+}
+.MoviePick h4 {
+  font-weight: 500;
+}
+.MoviePick-Heading-small {
+  opacity: 0.7;
+}
+
+.MoviePick-Cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}

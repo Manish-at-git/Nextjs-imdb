@@ -1,12 +1,13 @@
 .Navbar {
+  position: absolute;
+  top: 0;
   background-color: black;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  background-color: #121212;
   margin: 0 auto;
   position: relative;
-  /* padding: 0.5rem 1rem; */
+  padding: 0.5rem 1rem;
 }
 
 .logo {
@@ -14,11 +15,13 @@
 }
 
 .menu {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.9rem;
-  color: #fff;
+  color: rgb(240, 240, 240);
   padding: 0.4rem 1rem;
   margin: 0 2px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .Search {
@@ -54,16 +57,40 @@
 .watchlist {
   font-weight: 600;
   font-size: 0.9rem;
-  color: #fff;
+  color: rgb(240, 240, 240);
   padding: 0.4rem 1rem;
   margin: 0 2px;
   text-decoration: none;
+  border-radius: 5px;
 }
 .SignIn {
   font-weight: 600;
   font-size: 0.9rem;
-  color: #fff;
+  color: rgb(240, 240, 240);
   padding: 0.4rem 1rem;
   margin: 0 2px;
   text-decoration: none;
+  border-radius: 5px;
+}
+
+.lang {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: rgb(240, 240, 240);
+  padding: 0.4rem 1rem;
+  margin: 0 2px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.menu:hover,
+.watchlist:hover,
+.SignIn:hover,
+.lang:hover {
+  background-color: rgb(71, 71, 71);
+  color: white;
+}
+
+.icons {
+  opacity: 0.8;
 }
