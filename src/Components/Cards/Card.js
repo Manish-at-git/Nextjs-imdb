@@ -12,6 +12,7 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 // import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 import "./Card.css";
+
 function Cards() {
   return (
     <div className="App">

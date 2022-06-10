@@ -1,10 +1,11 @@
-import CardList from "./CardList/CardList";
-import MoviePick from "./Components/MoviePick/MoviePick";
-import Navbar from "./Navbar/Navbar";
-import Card from "./Components/Cards/Card";
-import LP from "./Components/Cards/Card";
-import Slider from "./Components/Slider/Slider";
-import CarouselCard from "./Components/Slider/CarouselCard/CarouselCard";
+// import Navbar from "./Navbar/Navbar";
+// import MoviePick from "./Components/MoviePick/MoviePick";
+// import Card from "./Components/Cards/Card";
+// import LP from "./Components/Cards/Card";
+// import Slider from "./Components/Slider/Slider";
+// import CarouselCard from "./Components/Slider/CarouselCard/CarouselCard";
+
+import MovieList from "./Components/MovieList/MovieList";
 
 function App() {
   return (
@@ -12,9 +13,8 @@ function App() {
       {/* <Navbar /> */}
       {/* <MoviePick /> */}
       {/* <Card /> */}
-      {/* <LP /> */}
-      {/* <Slider /> */}
-      <CarouselCard />
+      {/* <CarouselCard /> */}
+      <MovieList />
     </div>
   );
 }

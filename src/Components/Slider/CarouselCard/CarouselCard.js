@@ -16,15 +16,20 @@ function CarouselCard() {
     <div className="car">
       <div className="carousel-item active" data-bs-interval="10000">
         <img src={imgage} class="d-block w-100" alt="..." />
-        <div className="Carousel-Slider">
-          <span className="Carousel-Slider-image">
-            <img variant="top" src={img} className="card-img" />
-            <span className="add-bookmark-span">
-              <FontAwesomeIcon icon={Plus} size="lg" className="add-bookmark" />
+
+        <div className="carousel-caption">
+          <div className="Carousel-Slider">
+            <span className="Carousel-Slider-image">
+              <img variant="top" src={img} className="card-img" />
+              <span className="add-bookmark-span">
+                <FontAwesomeIcon
+                  icon={Plus}
+                  size="lg"
+                  className="add-bookmark"
+                />
+              </span>
             </span>
-          </span>
-        </div>
-        <div className="carousel-caption d-none d-md-block">
+          </div>
           <span>
             <FontAwesomeIcon
               icon={faCirclePlay}

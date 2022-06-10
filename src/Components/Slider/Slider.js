@@ -27,49 +27,31 @@ function Slider() {
           <div className="MoviePick-Cards">
             <Carousel>
               <Carousel.Item>
-                <div className="item">
-                  <Card />
-                </div>
+                <div className="item"></div>
               </Carousel.Item>
               <Carousel.Item>
-                <div className="item">
-                  <Card />
-                </div>
+                <div className="item"></div>
               </Carousel.Item>
               <Carousel.Item>
-                <div className="item">
-                  <Card />
-                </div>
+                <div className="item"></div>
               </Carousel.Item>
               <Carousel.Item>
-                <div className="item">
-                  <Card />
-                </div>
+                <div className="item"></div>
               </Carousel.Item>
               <Carousel.Item>
-                <div className="item">
-                  <Card />
-                </div>
+                <div className="item"></div>
               </Carousel.Item>
               <Carousel.Item>
-                <div className="item">
-                  <Card />
-                </div>
+                <div className="item"></div>
               </Carousel.Item>
               <Carousel.Item>
-                <div className="item">
-                  <Card />
-                </div>
+                <div className="item"></div>
               </Carousel.Item>
               <Carousel.Item>
-                <div className="item">
-                  <Card />
-                </div>
+                <div className="item"></div>
               </Carousel.Item>
               <Carousel.Item>
-                <div className="item">
-                  <Card />
-                </div>
+                <div className="item"></div>
               </Carousel.Item>
             </Carousel>
           </div>

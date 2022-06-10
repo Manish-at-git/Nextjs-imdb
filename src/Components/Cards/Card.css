@@ -37,6 +37,10 @@
   font-size: 1rem;
 }
 
+.title:hover {
+  text-decoration: underline;
+}
+
 .rating {
   padding: 8px;
   /* opacity: 0.8; */
@@ -45,12 +49,21 @@
   color: #5594e7;
 }
 
+.icons-rating-thin:hover {
+  color: #fff;
+}
+
 .icons {
   padding: 10px;
 }
 
 .thin {
   padding: 10px 40px;
+}
+
+.thin:hover {
+  background-color: rgb(71, 71, 71);
+  color: white;
 }
 
 .App {
@@ -95,5 +108,13 @@
   opacity: 0.8;
 }
 
-.add-bookmark:hover {
+.add-bookmark-span:hover {
+  background-color: #4e4e4e;
+}
+
+.add-bookmark-span:hover {
+  background-color: #4e4e4e;
+}
+.trailer-text:hover {
+  /* background-color: #4e4e4e; */
 }
