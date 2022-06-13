@@ -11,10 +11,10 @@
   opacity: 0.7;
 }
 
-.MoviePick-Cards {
+/* .MoviePick-Cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-}
+} */
 
 .carousel-indicators {
   display: none;

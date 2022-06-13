@@ -1,4 +1,14 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import { Pagination, Navigation } from "swiper";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
@@ -9,6 +19,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 import Card from "../Cards/Card";
+import img from "./poster.png";
 
 import "./MoviePick.css";
 import {
@@ -29,29 +40,56 @@ function MoviePick() {
           </p>
 
           <div className="MoviePick-Cards" style={{ border: "1px solid red" }}>
-            <Carousel style={{ border: "1px solid red" }}>
-              <Carousel.Item>
+            <Swiper
+              slidesPerView={5}
+              spaceBetween={0}
+              slidesPerGroup={2}
+              loop={true}
+              loopFillGroupWithBlank={true}
+              pagination={{
+                clickable: true,
+              }}
+              navigation={true}
+              modules={[Pagination, Navigation]}
+              className="mySwiper"
+            >
+              <SwiperSlide>
                 <Card />
-              </Carousel.Item>
-              <Carousel.Item>
+              </SwiperSlide>
+              <SwiperSlide>
                 <Card />
-              </Carousel.Item>
-              <Carousel.Item>
+              </SwiperSlide>
+              <SwiperSlide>
                 <Card />
-              </Carousel.Item>
-              <Carousel.Item>
+              </SwiperSlide>
+              <SwiperSlide>
                 <Card />
-              </Carousel.Item>
-              <Carousel.Item>
+              </SwiperSlide>
+              <SwiperSlide>
                 <Card />
-              </Carousel.Item>
-              <Carousel.Item>
+              </SwiperSlide>
+              <SwiperSlide>
                 <Card />
-              </Carousel.Item>
-              <Carousel.Item>
+              </SwiperSlide>
+              <SwiperSlide>
                 <Card />
-              </Carousel.Item>
-            </Carousel>
+              </SwiperSlide>
+              <SwiperSlide>
+                <Card />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Card />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Card />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Card />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Card />
+              </SwiperSlide>
+            </Swiper>
           </div>
         </div>
       </div>
