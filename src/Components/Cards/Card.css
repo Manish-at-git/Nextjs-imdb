@@ -13,6 +13,7 @@
   object-fit: cover;
   width: 100%;
   height: 300px;
+  border-radius: 0px;
 }
 
 .icons-rating {
@@ -43,6 +44,7 @@
 
 .rating {
   padding: 8px;
+  margin: 0;
   /* opacity: 0.8; */
 }
 .icons-rating-thin {
@@ -66,10 +68,10 @@
   color: white;
 }
 
-.App {
+/* .AppCard {
   display: flex;
   justify-content: center;
-}
+} */
 
 .trailer {
   font-size: 0.9rem;

@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar as thinStar } from "@fortawesome/free-regular-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import logo from "./logo.png";
 import NavbarLogo2 from "./NavbarLogo2.png";
@@ -27,7 +29,7 @@ function Navbar() {
       <nav className="container Navbar">
         <img className="logo logo1" src={logo} />
         <span className="menu" onClick={changeState}>
-          {/* <FontAwesomeIcon icon="fa-solid fa-bars" className="icons" /> */}
+          {/* <FontAwesomeIcon icon={faBars} className="icons" /> */}
           Menu
         </span>
         <span className="Search">

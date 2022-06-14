@@ -13,15 +13,12 @@ import { Pagination, Navigation } from "swiper";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 
-import { Carousel } from "react-bootstrap";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 import Card from "../Cards/Card";
 import img from "./poster.png";
-
 import "./MoviePick.css";
+
 import {
   faAngleRight,
   faChevronRight,
@@ -32,6 +29,7 @@ function MoviePick() {
       <div className="container MoviePick">
         <div className="MoviePick-Heading">
           <h4 className="MoviePick-Heading-Large d-flex align-items-center">
+            <FontAwesomeIcon icon="fa-solid fa-pipe" />
             Top Picks
             <FontAwesomeIcon icon={faChevronRight} className="px-2" />
           </h4>
@@ -39,16 +37,16 @@ function MoviePick() {
             TV Shows and Movies just for you
           </p>
 
-          <div className="MoviePick-Cards" style={{ border: "1px solid red" }}>
+          <div className="MoviePick-Cards">
             <Swiper
               slidesPerView={5}
-              spaceBetween={0}
+              spaceBetween={40}
               slidesPerGroup={2}
-              loop={true}
-              loopFillGroupWithBlank={true}
-              pagination={{
-                clickable: true,
-              }}
+              loop={false}
+              loopFillGroupWithBlank={false}
+              // pagination={{
+              //   clickable: true,
+              // }}
               navigation={true}
               modules={[Pagination, Navigation]}
               className="mySwiper"

@@ -15,7 +15,7 @@ import "./Card.css";
 
 function Cards() {
   return (
-    <div className="App">
+    <div className="AppCard">
       <Card className="Cards" style={{ backgroundColor: "#1a1a1a" }}>
         <Card.Img variant="top" src={img} className="card-img" />
         <span className="add-bookmark-span">
