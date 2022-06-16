@@ -26,30 +26,32 @@ function Navbar() {
 
   return (
     <>
-      <nav className="container Navbar">
-        <img className="logo logo1" src={logo} />
-        <span className="menu" onClick={changeState}>
-          {/* <FontAwesomeIcon icon={faBars} className="icons" /> */}
-          Menu
-        </span>
-        <span className="Search">
-          <input type="text" placeholder="Search IMDb" />
-        </span>
-        <img className="logo logo2" src={NavbarLogo2} />
-        <div className="verticle-line"></div>
-        <a src="" className="watchlist">
-          {/* <FontAwesomeIcon icon="fa-solid fa-bookmark" className="icons" /> */}
-          Watchlist
-        </a>
-        <a src="" className="SignIn">
-          Sign In
-        </a>
-        <span className="lang">
-          EN
-          {/* <FontAwesomeIcon icon="fa-solid fa-caret-down" className="icons" /> */}
-        </span>
-      </nav>
-      <NavLinks slide={slide} />
+      <div style={{ backgroundColor: "black" }}>
+        <nav className="container Navbar">
+          <img className="logo logo1" src={logo} />
+          <span className="menu" onClick={changeState}>
+            {/* <FontAwesomeIcon icon={faBars} className="icons" /> */}
+            Menu
+          </span>
+          <span className="Search">
+            <input type="text" placeholder="Search IMDb" />
+          </span>
+          <img className="logo logo2" src={NavbarLogo2} />
+          <div className="verticle-line"></div>
+          <a src="" className="watchlist">
+            {/* <FontAwesomeIcon icon="fa-solid fa-bookmark" className="icons" /> */}
+            Watchlist
+          </a>
+          <a src="" className="SignIn">
+            Sign In
+          </a>
+          <span className="lang">
+            EN
+            {/* <FontAwesomeIcon icon="fa-solid fa-caret-down" className="icons" /> */}
+          </span>
+        </nav>
+        <NavLinks slide={slide} />
+      </div>
     </>
   );
 }

@@ -12,12 +12,13 @@ import "swiper/css/bundle";
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
-      <MoviePick />
+      <Navbar />
+      {/* <MoviePick /> */}
       {/* <Card /> */}
       {/* <CarouselCard /> */}
       {/* <MovieList /> */}
-      {/* <SingleMovie /> */}
+      <SingleMovie />
+      {/* <Slider /> */}
     </div>
   );
 }

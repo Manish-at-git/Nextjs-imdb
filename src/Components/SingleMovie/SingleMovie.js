@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,7 +17,28 @@ import img from "./poster.png";
 import img2 from "./trailer.png";
 import "./SingleMovie.css";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import { Pagination, Navigation } from "swiper";
+
 function SingleMovie() {
+  let [apiData, setApiData] = useState(null);
+
+  // useEffect(() => {
+  //   fetch("https://imdb-api.com/en/API/Title/k_aw8n1uz1/tt1375666")
+  //     .then((response) => response.json())
+  //     .then((data) => setApiData(data));
+  // }, []);
+
+  // console.log(apiData);
+
   return (
     <>
       <div className="SingleMovie-main1 container-fluid">
@@ -70,19 +91,25 @@ function SingleMovie() {
           </div>
           <div className="SingleMovie-card">
             <div className="SingleMovie-poster card-element">
-              <img src={img} />
+              <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
             </div>
             <div className="SingleMovie-trailer card-element">
-              <img src={img2} />
+              <div className="embed-responsive embed-responsive-4by3">
+                <iframe
+                  className="embed-responsive-item"
+                  src="https://www.youtube.com/embed/vlDzYIIOYmM"
+                ></iframe>
+              </div>
             </div>
             <div className="SingleMovie-media card-element ">
-              <div className="SingleMovie-images ">
+              <div className="SingleMovie-images card-element">
                 <FontAwesomeIcon
                   className="icon"
                   icon={faImages}
                   size="lg"
                   style={{ color: "white" }}
                 />
+                <small>Images</small>
               </div>
               <div className="SingleMovie-images">
                 <FontAwesomeIcon
@@ -91,6 +118,7 @@ function SingleMovie() {
                   size="lg"
                   style={{ color: "white" }}
                 />
+                <small>Videos</small>
               </div>
             </div>
           </div>
@@ -175,213 +203,337 @@ function SingleMovie() {
           </div>
         </div>
       </div>
-      <div className="SingleMovie-main2 container-fluid">
-        <div className="container" style={{ padding: "20px" }}>
-          <div className="Cast">
-            Cast <FontAwesomeIcon icon={faAngleRight} size="md" />
-          </div>
-          <div className="gridCast">
-            <div style={{ marginRight: "40px" }}>
-              <div className="Cast-item inline">
-                <img
-                  src={img}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                  }}
-                />
-              </div>
-              <div className="cast-img inline">
-                <div className="Cast-Name">Tom Cruise</div>
-                <div className="Cast-desc">
-                  as Capt. Pete 'Maverick' Mitchell
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="Cast-item inline">
-                <img
-                  src={img}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                  }}
-                />
-              </div>
-              <div className="cast-img inline">
-                <div className="Cast-Name">Tom Cruise</div>
-                <div className="Cast-desc">
-                  as Capt. Pete 'Maverick' Mitchell
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="gridCast">
-            <div style={{ marginRight: "40px" }}>
-              <div className="Cast-item inline">
-                <img
-                  src={img}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                  }}
-                />
-              </div>
-              <div className="cast-img inline">
-                <div className="Cast-Name">Tom Cruise</div>
-                <div className="Cast-desc">
-                  as Capt. Pete 'Maverick' Mitchell
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="Cast-item inline">
-                <img
-                  src={img}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                  }}
-                />
-              </div>
-              <div className="cast-img inline">
-                <div className="Cast-Name">Tom Cruise</div>
-                <div className="Cast-desc">
-                  as Capt. Pete 'Maverick' Mitchell
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="gridCast">
-            <div style={{ marginRight: "40px" }}>
-              <div className="Cast-item inline">
-                <img
-                  src={img}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                  }}
-                />
-              </div>
-              <div className="cast-img inline">
-                <div className="Cast-Name">Tom Cruise</div>
-                <div className="Cast-desc">
-                  as Capt. Pete 'Maverick' Mitchell
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="Cast-item inline">
-                <img
-                  src={img}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                  }}
-                />
-              </div>
-              <div className="cast-img inline">
-                <div className="Cast-Name">Tom Cruise</div>
-                <div className="Cast-desc">
-                  as Capt. Pete 'Maverick' Mitchell
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="gridCast">
-            <div style={{ marginRight: "40px" }}>
-              <div className="Cast-item inline">
-                <img
-                  src={img}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                  }}
-                />
-              </div>
-              <div className="cast-img inline">
-                <div className="Cast-Name">Tom Cruise</div>
-                <div className="Cast-desc">
-                  as Capt. Pete 'Maverick' Mitchell
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="Cast-item inline">
-                <img
-                  src={img}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                  }}
-                />
-              </div>
-              <div className="cast-img inline">
-                <div className="Cast-Name">Tom Cruise</div>
-                <div className="Cast-desc">
-                  as Capt. Pete 'Maverick' Mitchell
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="container-fluid">
-        <div className="container">
-          <div className="SingleMovie-info" style={{ width: "60%" }}>
-            <hr className="description-line" />
-            <div className="director">
-              <span className="director-bold">Director</span>
-              <span className="director-blue"> Robert Eggers</span>
+        <div
+          className="container"
+          style={{ display: "flex", justifyContent: "space-between" }}
+        >
+          <div className="SingleMovie-main2 container" style={{ width: "60%" }}>
+            <div className="">
+              <Swiper
+                slidesPerView={3}
+                spaceBetween={100}
+                slidesPerGroup={1}
+                // loop={true}
+                // loopFillGroupWithBlank={true}
+                pagination={{
+                  clickable: true,
+                }}
+                navigation={true}
+                modules={[Pagination, Navigation]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <div className="slider-image">
+                    <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="slider-image">
+                    <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="slider-image">
+                    <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="slider-image">
+                    <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="slider-image">
+                    <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="slider-image">
+                    <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
+                  </div>
+                </SwiperSlide>
+              </Swiper>
             </div>
-            <hr className="description-line" />
-            <div className="director">
-              <span className="director-bold">Writer</span>
-              <span className="director-blue">
-                {" "}
-                Jim Cash(based on characters created by)Jack Epps Jr.(based on
-                characters created by)Peter Craig(story by)
-              </span>
+            <div>
+              <div className="Cast">
+                Cast <FontAwesomeIcon icon={faAngleRight} size="md" />
+              </div>
+              <div className="gridCast">
+                <div style={{ marginRight: "40px" }}>
+                  <div className="Cast-item inline">
+                    <img
+                      src={img}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        marginRight: "10px",
+                      }}
+                    />
+                  </div>
+                  <div className="cast-img inline">
+                    <div className="Cast-Name">Tom Cruise</div>
+                    <div className="Cast-desc">
+                      as Capt. Pete 'Maverick' Mitchell
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="Cast-item inline">
+                    <img
+                      src={img}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        marginRight: "10px",
+                      }}
+                    />
+                  </div>
+                  <div className="cast-img inline">
+                    <div className="Cast-Name">Tom Cruise</div>
+                    <div className="Cast-desc">
+                      as Capt. Pete 'Maverick' Mitchell
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="gridCast">
+                <div style={{ marginRight: "40px" }}>
+                  <div className="Cast-item inline">
+                    <img
+                      src={img}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        marginRight: "10px",
+                      }}
+                    />
+                  </div>
+                  <div className="cast-img inline">
+                    <div className="Cast-Name">Tom Cruise</div>
+                    <div className="Cast-desc">
+                      as Capt. Pete 'Maverick' Mitchell
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="Cast-item inline">
+                    <img
+                      src={img}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        marginRight: "10px",
+                      }}
+                    />
+                  </div>
+                  <div className="cast-img inline">
+                    <div className="Cast-Name">Tom Cruise</div>
+                    <div className="Cast-desc">
+                      as Capt. Pete 'Maverick' Mitchell
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="gridCast">
+                <div style={{ marginRight: "40px" }}>
+                  <div className="Cast-item inline">
+                    <img
+                      src={img}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        marginRight: "10px",
+                      }}
+                    />
+                  </div>
+                  <div className="cast-img inline">
+                    <div className="Cast-Name">Tom Cruise</div>
+                    <div className="Cast-desc">
+                      as Capt. Pete 'Maverick' Mitchell
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="Cast-item inline">
+                    <img
+                      src={img}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        marginRight: "10px",
+                      }}
+                    />
+                  </div>
+                  <div className="cast-img inline">
+                    <div className="Cast-Name">Tom Cruise</div>
+                    <div className="Cast-desc">
+                      as Capt. Pete 'Maverick' Mitchell
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="gridCast">
+                <div style={{ marginRight: "40px" }}>
+                  <div className="Cast-item inline">
+                    <img
+                      src={img}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        marginRight: "10px",
+                      }}
+                    />
+                  </div>
+                  <div className="cast-img inline">
+                    <div className="Cast-Name">Tom Cruise</div>
+                    <div className="Cast-desc">
+                      as Capt. Pete 'Maverick' Mitchell
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="Cast-item inline">
+                    <img
+                      src={img}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        marginRight: "10px",
+                      }}
+                    />
+                  </div>
+                  <div className="cast-img inline">
+                    <div className="Cast-Name">Tom Cruise</div>
+                    <div className="Cast-desc">
+                      as Capt. Pete 'Maverick' Mitchell
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <hr className="description-line" />
-            <div className="director">
-              <span className="director-bold">Stars</span>
-              <span className="director-blue">
-                {" "}
-                Tom Cruise Jennifer Connelly Miles Teller
-              </span>
+            <div className="container">
+              <div className="SingleMovie-info" style={{ width: "60%" }}>
+                <hr className="description-line" />
+                <div className="director">
+                  <span className="director-bold">Director</span>
+                  <span className="director-blue"> Robert Eggers</span>
+                </div>
+                <hr className="description-line" />
+                <div className="director">
+                  <span className="director-bold">Writer</span>
+                  <span className="director-blue">
+                    {" "}
+                    Jim Cash(based on characters created by)Jack Epps Jr.(based
+                    on characters created by)Peter Craig(story by)
+                  </span>
+                </div>
+                <hr className="description-line" />
+                <div className="director">
+                  <span className="director-bold">Stars</span>
+                  <span className="director-blue">
+                    {" "}
+                    Tom Cruise Jennifer Connelly Miles Teller
+                  </span>
+                </div>
+                <hr className="description-line" />
+                <div className="director">
+                  <span className="director-bold">All Cast and Crew</span>
+                </div>
+              </div>
             </div>
-            <hr className="description-line" />
-            <div className="director">
-              <span className="director-bold">All Cast and Crew</span>
+          </div>
+          <div className="single-sidebar">
+            <div className="single-sidebar-box">
+              <div className="watched-series">
+                <small className="watched-series-span">Watched Series</small>
+                <small className="created-year-span">created 9 year ago</small>
+              </div>
+              <img
+                src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg"
+                className="created-year"
+              />
+            </div>
+            <div className="single-sidebar-box">
+              <div className="watched-series">
+                <small className="watched-series-span">Watched Series</small>
+                <small className="created-year-span">created 9 year ago</small>
+              </div>
+              <img
+                src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg"
+                className="created-year"
+              />
+            </div>
+            <div className="single-sidebar-box">
+              <div className="watched-series">
+                <small className="watched-series-span">Watched Series</small>
+                <small className="created-year-span">created 9 year ago</small>
+              </div>
+              <img
+                src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg"
+                className="created-year"
+              />
+            </div>
+            <div className="single-sidebar-box">
+              <div className="watched-series">
+                <small className="watched-series-span">Watched Series</small>
+                <small className="created-year-span">created 9 year ago</small>
+              </div>
+              <img
+                src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg"
+                className="created-year"
+              />
+            </div>
+            <div className="single-sidebar-box">
+              <div className="watched-series">
+                <small className="watched-series-span">Watched Series</small>
+                <small className="created-year-span">created 9 year ago</small>
+              </div>
+              <img
+                src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg"
+                className="created-year"
+              />
+            </div>
+            <div className="single-sidebar-box">
+              <div className="watched-series">
+                <small className="watched-series-span">Watched Series</small>
+                <small className="created-year-span">created 9 year ago</small>
+              </div>
+              <img
+                src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg"
+                className="created-year"
+              />
+            </div>
+            <div className="single-sidebar-box">
+              <div className="watched-series">
+                <small className="watched-series-span">Watched Series</small>
+                <small className="created-year-span">created 9 year ago</small>
+              </div>
+              <img
+                src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg"
+                className="created-year"
+              />
             </div>
           </div>
         </div>
       </div>
+      {/* </div> */}
     </>
   );
 }
