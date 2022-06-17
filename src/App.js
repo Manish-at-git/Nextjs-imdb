@@ -15,9 +15,9 @@ function App() {
       <Navbar />
       {/* <MoviePick /> */}
       {/* <Card /> */}
-      <CarouselCard />
+      {/* <CarouselCard /> */}
       {/* <MovieList /> */}
-      {/* <SingleMovie /> */}
+      <SingleMovie />
       {/* <Slider /> */}
     </div>
   );
