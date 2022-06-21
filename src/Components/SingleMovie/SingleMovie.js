@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "font-awesome/css/font-awesome.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -49,11 +49,11 @@ function SingleMovie() {
         `https://imdb-api.com/en/API/Title/k_5n5e2r9a/${location.state.id}`
       )
     );
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     dispatch(loadSingleImages(location.state.id));
-  }, []);
+  }, [id]);
 
   console.log(location);
   // console.log(id);
@@ -111,13 +111,21 @@ function SingleMovie() {
 
   try {
     similars = data[0].similars.slice(0, 10).map((item) => (
-      <div className="single-sidebar-box">
-        <div className="watched-series">
-          <small className="watched-series-span">{item.title}</small>
-          <small className="created-year-span">{item.imDbRating}</small>
+      <NavLink
+        to={`/title/${item.id}`}
+        state={{
+          id: `${item.id}`,
+        }}
+        className="search-NavLink"
+      >
+        <div className="single-sidebar-box">
+          <div className="watched-series">
+            <small className="watched-series-span">{item.title}</small>
+            <small className="created-year-span">{item.imDbRating}</small>
+          </div>
+          <img src={item.image} className="created-year" />
         </div>
-        <img src={item.image} className="created-year" />
-      </div>
+      </NavLink>
     ));
   } catch (error) {
     console.log(error);
