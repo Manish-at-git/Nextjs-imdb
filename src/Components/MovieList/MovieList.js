@@ -1,17 +1,87 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import "./MovieList.css";
 
 import image from "./share.png";
 import img from "./list.png";
+import { loadMovieList } from "../../redux/actions";
 
-import "font-awesome/css/font-awesome.min.css";
+// import "font-awesome/css/font-awesome.min.css";
+import Categories from "./Categories/Categories";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as thinStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-
+// let images = [];
 function MovieList() {
+  const location = useLocation();
+
+  const datalist = useSelector((state) => state.images);
+  const dispatch = useDispatch();
+
+  console.log(location.state.url);
+  // const [list, setList] = useState([]);
+  let data = Array.from(datalist);
+  console.log(data[0]);
+  console.log(datalist);
+  // let mn = data.map((uhb) => {
+  //   uhb.map((jk) => {
+  //     console.log(jk);
+  //   });
+  // });
+  useEffect(() => {
+    dispatch(loadMovieList(location.state.url));
+  }, [location.state.url]);
+
+  var list;
+  try {
+    list = data[0].items.map((user) => (
+      <tr>
+        <td>
+          <img
+            className="table-image"
+            src={user.image}
+            style={{ width: "50px" }}
+          />
+          <small className="table-row">
+            {user.rank}.{" "}
+            <NavLink to={`/title/${user.id}`}>
+              <span className="blueName">{user.title}</span>
+            </NavLink>
+          </small>
+        </td>
+        <td
+          style={{
+            fontSize: "0.8rem",
+          }}
+        >
+          <FontAwesomeIcon
+            icon={solidStar}
+            style={{
+              color: "#f5c518",
+              padding: "0 5px",
+            }}
+            size="lg"
+          />
+          <b>{user.imDbRating}</b>
+        </td>
+        <td>
+          <FontAwesomeIcon
+            icon={thinStar}
+            style={{ color: "grey", opacity: "0.5" }}
+          />
+        </td>
+        <td>
+          <FontAwesomeIcon icon={faPlus} style={{ color: "grey" }} />
+        </td>
+      </tr>
+    ));
+  } catch (error) {
+    console.log(error);
+  }
+
   return (
     <div className="MovieList">
       <div className="container MovieList-container">
@@ -20,9 +90,11 @@ function MovieList() {
             <div className="MovieList-headerpage">
               <div className="MovieList-head">
                 <h5>IMDb Charts</h5>
-                <h3 className="MovieList-header">IMDb Top 250 Movies</h3>
+                <h3 className="MovieList-header">
+                  IMDb {location.state.title}
+                </h3>
                 <small className="MovieList-byline">
-                  IMDb Top 250 as rated by regular IMDb voters.
+                  IMDb {location.state.title} as rated by regular IMDb voters.
                 </small>
               </div>
               <div className="image">
@@ -32,7 +104,9 @@ function MovieList() {
             <hr />
             <div className="MovieList-LowerHeader">
               <div className="MovieList-title">
-                <small>Showing 250 Titles</small>
+                <small className="showing">
+                  Showing {location.state.title}
+                </small>
               </div>
               <div className="MovieList-sort">
                 <label for="sort">Sort by : </label>
@@ -45,88 +119,44 @@ function MovieList() {
             <div className="MovieList-list">
               <div>
                 <table>
-                  <tr>
+                  <tr style={{ border: "none" }}>
                     <th
                       style={{
                         width: "70%",
-                        fontSize: "0.9rem",
+                        fontSize: "0.8rem",
                         paddingLeft: "60px",
                       }}
                     >
                       Rank & Title
                     </th>
-                    <th>IMDb</th>
-                    <th>Your</th>
+                    <th
+                      style={{
+                        fontSize: "0.8rem",
+                      }}
+                    >
+                      <span>
+                        <span className="your-Rating">IMDb</span>
+                        <span className="your-Rating">Rating</span>
+                      </span>
+                    </th>
+                    <th
+                      style={{
+                        fontSize: "0.8rem",
+                      }}
+                    >
+                      <span>
+                        <span className="your-Rating">Your</span>
+                        <span className="your-Rating">Rating</span>
+                      </span>
+                    </th>
                     <th></th>
                   </tr>
-                  <tr>
-                    <td>
-                      <img className="table-image" src={img} />
-                      <small className="table-row">
-                        1. The Shawshank Redemption (1994)
-                      </small>
-                    </td>
-                    <td>
-                      <FontAwesomeIcon
-                        icon={solidStar}
-                        style={{ color: "gold" }}
-                      />
-                      9.2
-                    </td>
-                    <td>
-                      <FontAwesomeIcon
-                        icon={thinStar}
-                        style={{ color: "grey" }}
-                      />
-                    </td>
-                    <td>
-                      <FontAwesomeIcon
-                        icon={faPlus}
-                        style={{ color: "grey" }}
-                      />
-                    </td>
-                  </tr>
+                  {list}
                 </table>
               </div>
             </div>
           </div>
-          <div className="MovieList-sideBar">
-            <div className="Sidebar-header">
-              <h5>You Have Seen</h5>
-              <span>
-                <span className="bold">0</span>/250 (0%)
-              </span>
-              <div className="Sidebar-check">
-                <input type="checkbox" />
-                <label>Hide titles I've seen</label>
-              </div>
-            </div>
-            <hr />
-            <div className="category">
-              <h6>Top Rated Movies by Genre</h6>
-              <small>Action</small>
-              <small>Adventure</small>
-              <small>Animation</small>
-              <small>Biography</small>
-              <small>Comedy</small>
-              <small>Crime</small>
-              <small>Drama</small>
-              <small>Action</small>
-              <small>Adventure</small>
-              <small>Animation</small>
-              <small>Biography</small>
-              <small>Comedy</small>
-              <small>Crime</small>
-              <small>Drama</small>
-              <small>Action</small>
-              <small>Adventure</small>
-              <small>Animation</small>
-              <small>Biography</small>
-              <small>Comedy</small>
-              <small>Crime</small>
-              <small>Drama</small>
-            </div>
-          </div>
+          <Categories />
         </div>
       </div>
     </div>

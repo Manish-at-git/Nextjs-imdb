@@ -8,10 +8,14 @@
   position: relative;
 }
 
+/* .carousel-caption {
+  position: relative;
+} */
+
 .Carousel-Slider-image {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 20px;
 }
 .Carousel-Slider-image img {
   object-fit: cover;
@@ -21,6 +25,35 @@
 .add-bookmark {
   color: white;
   background-color: transparent;
+}
+
+.play-button {
+  position: absolute;
+  left: 220px;
+  bottom: 30px;
+}
+
+.text {
+  /* border: 1px solid red; */
+  position: absolute;
+  bottom: -20px;
+  width: 450px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.text h2 {
+  text-align: left;
+  font-size: 32px;
+  font-family: "Roboto", sans-serif;
+}
+
+.text p {
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  opacity: 0.9;
 }
 
 .add-bookmark-span {
@@ -34,8 +67,12 @@
 }
 
 .carousel-caption {
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  position: absolute;
+  bottom: 0%;
+  left: 0;
+  right: 0;
   display: flex;
-
-  justify-content: center;
+  width: 100%;
+  justify-content: flex-end;
 }

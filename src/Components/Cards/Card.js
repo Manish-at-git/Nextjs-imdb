@@ -1,7 +1,7 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
-import img from "./img.png";
-import "font-awesome/css/font-awesome.min.css";
+
+// import "font-awesome/css/font-awesome.min.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as thinStar } from "@fortawesome/free-regular-svg-icons";
@@ -13,11 +13,12 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 import "./Card.css";
 
-function Cards() {
+function Cards(props) {
+  console.log(props.item.title);
   return (
     <div className="AppCard">
-      <Card className="Cards" style={{ backgroundColor: "#1a1a1a" }}>
-        <Card.Img variant="top" src={img} className="card-img" />
+      <Card className="Cards">
+        <Card.Img variant="top" src={props.item.image} className="card-img" />
         <span className="add-bookmark-span">
           <FontAwesomeIcon icon={Plus} size="lg" className="add-bookmark" />
         </span>
@@ -26,13 +27,17 @@ function Cards() {
           <Card.Text className="cardText rating">
             <span className="icons">
               <FontAwesomeIcon icon={solidStar} className="icons-rating" />
-              7.5
+              {/* {props.id} */}
+              7.2
             </span>
             <span className="icons thin">
               <FontAwesomeIcon icon={thinStar} className="icons-rating-thin" />
             </span>
           </Card.Text>
-          <Card.Title className="cardText title">Obi-van Kenobi</Card.Title>
+          <Card.Title className="cardText title">
+            {/* {props.title.slice(0, 20)} */}
+            {props.item.title}
+          </Card.Title>
           <Card.Text className="cardText watch-options">
             <FontAwesomeIcon
               icon={Plus}

@@ -1,7 +1,7 @@
 import React from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "font-awesome/css/font-awesome.min.css";
+// import "font-awesome/css/font-awesome.min.css";
 
 import imgage from "./image.jpg";
 import img from "./img.png";
@@ -20,26 +20,24 @@ function CarouselCard() {
         <div className="carousel-caption">
           <div className="Carousel-Slider">
             <span className="Carousel-Slider-image">
-              <img variant="top" src={img} className="card-img" />
+              <img src={img} className="card-img" />
               <span className="add-bookmark-span">
                 <FontAwesomeIcon
                   icon={Plus}
-                  size="lg"
+                  style={{ height: "20px" }}
                   className="add-bookmark"
                 />
               </span>
             </span>
           </div>
-          <span>
-            <FontAwesomeIcon
-              icon={faCirclePlay}
-              size="lg"
-              className="add-bookmark"
-            />
+          <span className="play-button">
+            <FontAwesomeIcon icon={faCirclePlay} style={{ fontSize: "60px" }} />
           </span>
-          <span>
-            <h2>First Slider</h2>
-            <p>Watch te</p>
+          <span className="text">
+            <div>
+              <h2>Ana de Armas Is Marilyn Monroe in 'Blonde</h2>
+              <p>Watch te</p>
+            </div>
           </span>
         </div>
       </div>

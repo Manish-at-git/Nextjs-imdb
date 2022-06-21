@@ -68,7 +68,7 @@
 
 .icons {
   width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .SingleMovie-media {
@@ -216,11 +216,15 @@ iframe {
   /* flex-direction: column; */
 }
 
+.swiper-pagination {
+  display: none;
+}
+
 .slider-image {
   margin: 0;
-  height: 220px;
+  height: 200px;
   /* border: 1px solid grey; */
-  width: 220px;
+  /* width: 200px; */
   display: flex;
   justify-content: center;
   align-items: center;
