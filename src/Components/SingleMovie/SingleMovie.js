@@ -132,7 +132,7 @@ function SingleMovie() {
   }
 
   try {
-    images = singleImage[0].items.slice(0, 10).map((item) => (
+    images = singleImage[0].imagesData.items.slice(0, 10).map((item) => (
       <SwiperSlide>
         <div className="slider-image">
           <img src={item.image} />
@@ -204,7 +204,7 @@ function SingleMovie() {
                   <div className="embed-responsive embed-responsive-4by3">
                     <iframe
                       className="embed-responsive-item"
-                      src="https://www.imdb.com/video/vi2959588889"
+                      src={singleImage[0].trailerdata.link}
                     ></iframe>
                   </div>
                 </div>
