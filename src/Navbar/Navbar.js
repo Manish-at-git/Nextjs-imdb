@@ -40,7 +40,7 @@ function Navbar() {
           <div className="verticle-line"></div>
           <a src="" className="watchlist">
             {/* <FontAwesomeIcon icon="fa-solid fa-bookmark" className="icons" /> */}
-            Watchlist
+            Watcst
           </a>
           <a src="" className="SignIn">
             Sign In

@@ -21,6 +21,7 @@ import { useEffect } from "react";
 import configureStore from "./redux/store/store";
 import Grid from "./Components/Grid/Grid";
 import SingleMovie from "./Components/SingleMovie/SingleMovie";
+import Authentication from "./Components/Authentication/Authentication";
 const store = configureStore();
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
       <Fragment>
         <BrowserRouter>
           <Navbar />
-          {/* <SingleMovie /> */}
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="top250" element={<MovieList />} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "font-awesome/css/font-awesome.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -29,21 +29,34 @@ import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 import { useDispatch, useSelector } from "react-redux";
-import { loadMovieList } from "../../redux/actions";
+import { loadMovieList, loadSingleImages } from "../../redux/actions";
 import WhatToWatch from "../WhatToWatch/WhatToWatch";
 import Cast from "./Cast/Cast";
 
 function SingleMovie() {
   const location = useLocation();
-
+  const { id } = useParams();
   const data = useSelector((state) => state.images);
+  const singleImage = useSelector((state) => state.singleMovieImage);
   const dispatch = useDispatch();
+
+  // let link = "tt0120338";
+  // location ? (link = location.state.id) : (link = id);
 
   useEffect(() => {
     dispatch(
-      loadMovieList("https://imdb-api.com/en/API/Title/k_aw8n1uz1/tt1375666")
+      loadMovieList(
+        `https://imdb-api.com/en/API/Title/k_5n5e2r9a/${location.state.id}`
+      )
     );
   }, []);
+
+  useEffect(() => {
+    dispatch(loadSingleImages(location.state.id));
+  }, []);
+
+  console.log(location);
+  // console.log(id);
 
   // useEffect(() => {
   //   fetch("https://imdb-api.com/en/API/Title/k_aw8n1uz1/tt1375666")
@@ -51,7 +64,7 @@ function SingleMovie() {
   //     .then((data) => setApiData(data));
   // }, []);
 
-  console.log(data[0].title);
+  // console.log(data[0].title);
 
   // let movie = data[0];
   // console.log(movie);
@@ -61,6 +74,7 @@ function SingleMovie() {
   var genre;
   var cast;
   var similars;
+  var images;
   try {
     genre = data[0].genreList.map((item) => (
       <span className="categories-action">{item.value}</span>
@@ -104,6 +118,18 @@ function SingleMovie() {
         </div>
         <img src={item.image} className="created-year" />
       </div>
+    ));
+  } catch (error) {
+    console.log(error);
+  }
+
+  try {
+    images = singleImage[0].items.slice(0, 10).map((item) => (
+      <SwiperSlide>
+        <div className="slider-image">
+          <img src={item.image} />
+        </div>
+      </SwiperSlide>
     ));
   } catch (error) {
     console.log(error);
@@ -284,38 +310,10 @@ function SingleMovie() {
                     modules={[Pagination, Navigation]}
                     className="mySwiper"
                   >
-                    <SwiperSlide>
-                      <div className="slider-image">
-                        <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="slider-image">
-                        <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="slider-image">
-                        <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="slider-image">
-                        <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="slider-image">
-                        <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="slider-image">
-                        <img src="https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6751_AL_.jpg" />
-                      </div>
-                    </SwiperSlide>
+                    {images}
                   </Swiper>
                 </div>
+
                 <div>
                   <div className="gridCast">{cast}</div>
                 </div>

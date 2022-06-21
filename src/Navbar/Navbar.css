@@ -44,9 +44,11 @@
   /* height: 30px; */
 }
 
-.Search input:focus {
+/* .Search input:focus {
   border-radius: 3px;
-}
+  text-decoration: none;
+  border: 1px solid red;
+} */
 
 .verticle-line {
   border-right: 2px solid grey;

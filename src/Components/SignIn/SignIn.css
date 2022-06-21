@@ -1,9 +1,13 @@
 .Login-main {
-  padding: 10px 50px;
+  /* padding: 10px 20px; */
   background-color: #000;
   color: #fff;
   font-family: "Roboto", sans-serif;
   /* height: 100vh; */
+}
+
+.Login-child {
+  padding: 10px;
 }
 
 .Login-container {

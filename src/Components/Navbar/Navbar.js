@@ -16,11 +16,16 @@ import NavbarLogo2 from "../../assets/images/NavbarLogo2.png";
 
 import "./Navbar.css";
 import NavLinks from "./NavbarLink/NavLinks";
+import Search from "../Search/Search";
+
+import { loadSearch } from "../../redux/actions/index";
 
 function Navbar() {
   const toggle = useSelector((state) => state.navbarToggle);
+  const searchdata = useSelector((state) => state.search);
   const dispatch = useDispatch();
   let navbarNotToggled = true;
+  // console.log(searchdata[0].errorMessage);
 
   const changeState = () => {
     dispatch(navbarToggle(navbarNotToggled));
@@ -29,6 +34,20 @@ function Navbar() {
   console.log(toggle);
   let slide = {};
   toggle ? (slide = { position: "absolute", top: "-100%" }) : (slide = null);
+
+  // let showSearch = false;
+  // const [showSearch, setshowSearch] = useState(false);
+  const [search, setSearch] = useState("");
+
+  // const onFocus = () => {
+  //   setshowSearch(true);
+  //   // console.log(showSearch);
+  // };
+
+  // const onBlur = () => {
+  //   setshowSearch(false);
+  //   // console.log(showSearch);
+  // };
 
   return (
     <>
@@ -42,7 +61,15 @@ function Navbar() {
             Menu
           </span>
           <span className="Search">
-            <input type="text" placeholder="Search IMDb" />
+            <input
+              className="search-input"
+              type="text"
+              placeholder="Search IMDb"
+              onChange={(event) => {
+                setSearch(event.target.value);
+                console.log(search);
+              }}
+            />
             <FontAwesomeIcon
               icon={faSearch}
               className="ico,ns"
@@ -54,6 +81,13 @@ function Navbar() {
                 borderBottomLeftRadius: "0px",
                 borderTopLeftRadius: "0px",
                 // borderLeft: "1px solid grey",
+              }}
+              onClick={() => {
+                // loadSearch(search);
+                dispatch(loadSearch(search));
+                // setshowSearch(true);
+                // setSearch("");
+                // document.querySelector(".search-input").value = "";
               }}
             />
           </span>
@@ -73,6 +107,8 @@ function Navbar() {
         </nav>
         <NavLinks slide={slide} />
       </div>
+      {search ? <Search props={searchdata} /> : null}
+      {console.log(searchdata)}
     </>
   );
 }
