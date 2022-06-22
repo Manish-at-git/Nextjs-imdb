@@ -20,47 +20,6 @@ const loadSignIn = (payload) => {
 const loadSignOut = () => ({
   type: SIGNOUT,
 });
-// const setSignInData = (payload) => {
-//   // console.log("url:", url);
-//   return {
-//     type: SIGNIN.LOAD_SUCCESS,
-//     payload,
-//   };
-// };
-
-// const setSignInError = (error) => ({
-//   type: SIGNIN.LOAD_FAIL,
-//   error,
-// });
-
-// const loadRegister = (payload) => {
-//   console.log("actionnnnnnnnnnnnn", payload);
-//   return {
-//     type: REGISTER.LOAD,
-//     payload,
-//   };
-// };
-// const setRegisterData = (payload) => {
-//   // console.log("url:", url);
-//   return {
-//     type: REGISTER.LOAD_SUCCESS,
-//     payload,
-//   };
-// };
-
-// const setRegisterError = (error) => ({
-//   type: REGISTER.LOAD_FAIL,
-//   error,
-// });
-
-// const setSignOutData = (user) => ({
-//   type: SIGNOUT.LOAD_SUCCESS,
-//   user,
-// });
-// const setSignOutError = (user) => ({
-//   type: SIGNOUT.LOAD_SUCCESS,
-//   user,
-// });
 
 const loadMovieList = (url) => {
   console.log("url:", url);
@@ -79,8 +38,6 @@ const setError = (error) => ({
 });
 
 const loadSearch = (title) => {
-  // console.log("url:", url);
-  // console.log(title, "title");
   return {
     type: SEARCH.LOAD,
     title,
@@ -131,11 +88,6 @@ export {
   loadSingleImages,
   setSingleImagesData,
   setSingleImagesError,
-  // loadRegister,
-  // setRegisterData,
-  // setRegisterError,
   loadSignIn,
   loadSignOut,
-  // setSignInData,
-  // setSignInError,
 };

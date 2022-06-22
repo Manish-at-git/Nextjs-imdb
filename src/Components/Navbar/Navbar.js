@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { navbarToggle } from "../../redux/actions";
 
 import { NavLink } from "react-router-dom";
 
-// import "font-awesome/css/font-awesome.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +15,9 @@ import "./Navbar.css";
 import NavLinks from "./NavbarLink/NavLinks";
 import Search from "../Search/Search";
 
+import { useSelector, useDispatch } from "react-redux";
 import { loadSearch } from "../../redux/actions/index";
+import { navbarToggle } from "../../redux/actions";
 
 function Navbar() {
   const toggle = useSelector((state) => state.navbarToggle);
@@ -36,19 +35,7 @@ function Navbar() {
   let slide = {};
   toggle ? (slide = { position: "absolute", top: "-100%" }) : (slide = null);
 
-  // let showSearch = false;
-  // const [showSearch, setshowSearch] = useState(false);
   const [search, setSearch] = useState("");
-
-  // const onFocus = () => {
-  //   setshowSearch(true);
-  //   // console.log(showSearch);
-  // };
-
-  // const onBlur = () => {
-  //   setshowSearch(false);
-  //   // console.log(showSearch);
-  // };
 
   return (
     <>
@@ -73,22 +60,16 @@ function Navbar() {
             />
             <FontAwesomeIcon
               icon={faSearch}
-              className="ico,ns"
+              className="iconss"
               style={{
                 color: "grey",
                 backgroundColor: "#fff",
                 padding: "9px 10px",
                 borderRadius: "3px",
-                borderBottomLeftRadius: "0px",
-                borderTopLeftRadius: "0px",
-                // borderLeft: "1px solid grey",
+                marginLeft: "2px",
               }}
               onClick={() => {
-                // loadSearch(search);
                 dispatch(loadSearch(search));
-                // setshowSearch(true);
-                // setSearch("");
-                // document.querySelector(".search-input").value = "";
               }}
             />
           </span>
@@ -99,7 +80,7 @@ function Navbar() {
             Watchlist
           </a>
           <NavLink to="/signin" className="SignIn">
-            {console.log(signinData)}
+            {/* {console.log(signinData)} */}
             {signinData == "" ? "Sign In" : "Sign Out"}
           </NavLink>
           <span className="lang">
@@ -110,7 +91,7 @@ function Navbar() {
         <NavLinks slide={slide} />
       </div>
       {search ? <Search props={searchdata} /> : null}
-      {console.log(searchdata)}
+      {/* {console.log(searchdata)} */}
       {/* <Search /> */}
     </>
   );

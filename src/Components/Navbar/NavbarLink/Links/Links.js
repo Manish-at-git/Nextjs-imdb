@@ -2,8 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "font-awesome/css/font-awesome.min.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./Links.css";
 
@@ -12,10 +10,7 @@ function Links(props) {
 
   return (
     <div className="Link">
-      <h4 className="Heading">
-        {/* <FontAwesomeIcon icon="fa-solid fa-film-simple" /> */}
-        {title}
-      </h4>
+      <h4 className="Heading">{title}</h4>
 
       {List.map((item, id) => (
         <NavLink

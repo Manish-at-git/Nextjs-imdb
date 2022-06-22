@@ -55,21 +55,8 @@ function* handleLoadSingleMovie(action) {
   }
 }
 
-// function* handleLoadRegister(action) {
-//   try {
-//     // const { registerEmail, registerPassword } = action.payload;
-//     // console.log(registerEmail, registerPassword);
-//     // console.log(action.payload);
-//     const data = yield call(register, action.payload);
-//     yield put(setRegisterData(data));
-//   } catch (error) {
-//     yield put(setRegisterError(error.toString()));
-//   }
-// }
-
 export default function* watchImagesLoad() {
   yield takeLatest(MOVIELISTDATA.LOAD, handleImagesLoad);
   yield takeLatest(SEARCH.LOAD, handleSearchLoad);
   yield takeLatest(SINGLEMOVIE.LOAD, handleLoadSingleMovie);
-  // yield takeLatest(REGISTER.LOAD, handleLoadRegister);
 }

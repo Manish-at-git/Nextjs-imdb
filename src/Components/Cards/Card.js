@@ -1,7 +1,5 @@
-// import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
-
-// import "font-awesome/css/font-awesome.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as thinStar } from "@fortawesome/free-regular-svg-icons";
@@ -9,12 +7,11 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faPlus as Plus } from "@fortawesome/free-solid-svg-icons";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
-// import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 import "./Card.css";
 
 function Cards(props) {
-  console.log(props.item.title);
+  // console.log(props.item.title);
   return (
     <div className="AppCard">
       <Card className="Cards">
@@ -27,17 +24,13 @@ function Cards(props) {
           <Card.Text className="cardText rating">
             <span className="icons">
               <FontAwesomeIcon icon={solidStar} className="icons-rating" />
-              {/* {props.id} */}
               7.2
             </span>
             <span className="icons thin">
               <FontAwesomeIcon icon={thinStar} className="icons-rating-thin" />
             </span>
           </Card.Text>
-          <Card.Title className="cardText title">
-            {/* {props.title.slice(0, 20)} */}
-            {props.item.title}
-          </Card.Title>
+          <Card.Title className="cardText title">{props.item.title}</Card.Title>
           <Card.Text className="cardText watch-options">
             <FontAwesomeIcon
               icon={Plus}

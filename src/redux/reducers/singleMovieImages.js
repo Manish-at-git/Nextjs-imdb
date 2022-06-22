@@ -12,8 +12,7 @@ const singleMovieImage = (state = [], action) => {
       console.log(action.data.imagesData);
       console.log(action.data.trailerdata);
     }
-    // state =
-    console.log("Acitonaaa", [...state, action.data]);
+    // console.log("Aciton", [...state, action.data]);
     return [...state, action.data];
   }
   return state;

@@ -4,7 +4,6 @@ import watchImagesLoad from "./imagesSaga";
 import imagesSaga from "./imagesSaga";
 
 function* watchSagas() {
-  // console.log("manish");
   yield all(watchImagesLoad);
 }
 

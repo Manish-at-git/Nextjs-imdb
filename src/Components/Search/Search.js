@@ -5,14 +5,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
 
-// try {
-//   let searchResults =
-// } catch (error) {}
-
 function Search(props) {
   let SeacrhData;
   console.log(props);
-  // console.log(props.props[0].results);
   try {
     SeacrhData = props.props[0].results.map((item) => (
       <>

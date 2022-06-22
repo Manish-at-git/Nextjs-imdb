@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation, useParams } from "react-router-dom";
+
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "font-awesome/css/font-awesome.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as thinStar } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -11,27 +11,22 @@ import {
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { faImages } from "@fortawesome/free-solid-svg-icons";
 import { faFilm } from "@fortawesome/free-solid-svg-icons";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+// import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import img from "./poster.png";
-import img2 from "./trailer.png";
-import "./SingleMovie.css";
-
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// import required modules
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
+
 import { useDispatch, useSelector } from "react-redux";
 import { loadMovieList, loadSingleImages } from "../../redux/actions";
 import WhatToWatch from "../WhatToWatch/WhatToWatch";
 import Cast from "./Cast/Cast";
+
+import "./SingleMovie.css";
 
 function SingleMovie() {
   const location = useLocation();
@@ -43,13 +38,10 @@ function SingleMovie() {
   console.log(singleImage);
   console.log(location);
 
-  // let link = "tt0120338";
-  // location ? (link = location.state.id) : (link = id);
-
   useEffect(() => {
     dispatch(
       loadMovieList(
-        `https://imdb-api.com/en/API/Title/k_1yw64100/${location.state}`
+        `https://imdb-api.com/en/API/Title/k_67o8cg68/${location.state}`
       )
     );
   }, [id]);
@@ -58,21 +50,9 @@ function SingleMovie() {
     dispatch(loadSingleImages(location.state));
   }, [id]);
 
-  console.log(location);
-  // console.log(id);
+  // console.log(location);
 
-  // useEffect(() => {
-  //   fetch("https://imdb-api.com/en/API/Title/k_aw8n1uz1/tt1375666")
-  //     .then((response) => response.json())
-  //     .then((data) => setApiData(data));
-  // }, []);
-
-  // console.log(data[0].title);
-
-  // let movie = data[0];
-  // console.log(movie);
-
-  const style = { color: "black", fontSize: "28px" };
+  // const style = { color: "black", fontSize: "28px" };
 
   var genre;
   var cast;
@@ -354,7 +334,7 @@ function SingleMovie() {
           </div>
         </>
       ) : (
-        <h1>hello</h1>
+        <h1>No Movie</h1>
       )}
     </>
   );

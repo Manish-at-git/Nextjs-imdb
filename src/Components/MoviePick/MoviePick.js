@@ -8,29 +8,20 @@ import { NavLink } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper";
 
 import { useSelector, useDispatch } from "react-redux";
 
-// import required modules
-import { Pagination, Navigation } from "swiper";
-
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "font-awesome/css/font-awesome.min.css";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import WhatToWatch from "../WhatToWatch/WhatToWatch";
 import Card from "../Cards/Card";
-import img from "./poster.png";
+
 import "./MoviePick.css";
 
-import {
-  faAngleRight,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
 function MoviePick(props) {
   const data = useSelector((state) => state.images);
-  const isLoading = useSelector((state) => state.isLoading);
+  // const isLoading = useSelector((state) => state.isLoading);
 
   const dispatch = useDispatch();
 
@@ -39,15 +30,8 @@ function MoviePick(props) {
     console.log("api");
   }, []);
 
-  // var dataApi;
-
-  // if (data) {
-  //   dataApi = data[0].items;
-  // } else {
-  //   dataApi = [];
-  // }
-  console.log(data);
-  console.log(isLoading);
+  // console.log(data);
+  // console.log(isLoading);
   var list;
   try {
     list = data[0].items.slice(0, 15).map((item) => (

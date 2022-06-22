@@ -151,3 +151,7 @@ tr:nth-child(even) {
   /* margin: 1px 0; */
   border: #fff 1px solid;
 }
+
+.MovieList-NavLink {
+  text-decoration: none;
+}

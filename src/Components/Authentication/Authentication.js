@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 
 import {
   createUserWithEmailAndPassword,
@@ -12,7 +13,6 @@ import { auth } from "../../firebase/firebase-config";
 
 import { useDispatch, useSelector } from "react-redux";
 import { loadSignIn, loadSignOut } from "../../redux/actions";
-import { Alert } from "react-bootstrap";
 
 function Authentication() {
   const dispatch = useDispatch();
@@ -71,11 +71,6 @@ function Authentication() {
   const logout = async () => {
     await signOut(auth);
   };
-
-  // let userLoggedIn;
-
-  // let registerData = { registerEmail, registerPassword };
-  // userLogged ? (userLoggedIn = userLogged.email) : (userLoggedIn = {});
 
   return (
     <div className="Auth">
@@ -143,7 +138,6 @@ function Authentication() {
 
               <small className="logged-user"> User Logged In: </small>
               {userLogged?.email}
-              {/* {auth.currentUser.email} */}
 
               <button
                 className="auth-button"

@@ -46,8 +46,6 @@
   padding: 5px 10px;
   font-size: 0.9rem;
   /* height: 30px; */
-  border-bottom-right-radius: 0px;
-  border-top-right-radius: 1px;
 }
 
 .Search input:focus {
@@ -105,4 +103,19 @@
 .nav-icons {
   opacity: 0.8;
   padding: 0 5px;
+}
+
+.iconss:hover {
+  cursor: pointer;
+}
+
+.search-input:focus {
+  outline: none;
+  border: 1px solid white;
+  background: #fff;
+  border-radius: 3px;
+  flex-grow: 1;
+  max-width: 750px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
 }

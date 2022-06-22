@@ -4,33 +4,24 @@ import { useSelector, useDispatch } from "react-redux";
 import "./MovieList.css";
 
 import image from "./share.png";
-import img from "./list.png";
 import { loadMovieList } from "../../redux/actions";
 
-// import "font-awesome/css/font-awesome.min.css";
 import Categories from "./Categories/Categories";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as thinStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-// let images = [];
+
 function MovieList() {
   const location = useLocation();
-
   const datalist = useSelector((state) => state.images);
   const dispatch = useDispatch();
 
-  console.log(location.state.url);
-  // const [list, setList] = useState([]);
+  // console.log(location.state.url);
   let data = Array.from(datalist);
-  console.log(data[0]);
-  console.log(datalist);
-  // let mn = data.map((uhb) => {
-  //   uhb.map((jk) => {
-  //     console.log(jk);
-  //   });
-  // });
+  // console.log(data[0]);
+
   useEffect(() => {
     dispatch(loadMovieList(location.state.url));
   }, [location.state.url]);
@@ -47,7 +38,11 @@ function MovieList() {
           />
           <small className="table-row">
             {user.rank}.{" "}
-            <NavLink to={`/title/${user.id}`} state={user.id}>
+            <NavLink
+              to={`/title/${user.id}`}
+              state={user.id}
+              className="MovieList-NavLink"
+            >
               <span className="blueName">{user.title}</span>
             </NavLink>
             {console.log(user.id)}

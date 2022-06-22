@@ -4,7 +4,6 @@ import "./SignIn.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faStar as thinStar } from "@fortawesome/free-regular-svg-icons";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import WhatToWatch from "../WhatToWatch/WhatToWatch";
 
