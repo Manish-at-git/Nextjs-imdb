@@ -52,7 +52,7 @@ function MoviePick(props) {
   try {
     list = data[0].items.slice(0, 15).map((item) => (
       <SwiperSlide>
-        {console.log(item)}
+        {console.log(item.id)}
         <NavLink to={`/title/${item.id}`} state={item.id} className="NavLink">
           <Card item={item} />
         </NavLink>

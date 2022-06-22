@@ -41,6 +41,7 @@ function SingleMovie() {
   const dispatch = useDispatch();
 
   console.log(singleImage);
+  console.log(location.state);
 
   // let link = "tt0120338";
   // location ? (link = location.state.id) : (link = id);
@@ -48,13 +49,13 @@ function SingleMovie() {
   useEffect(() => {
     dispatch(
       loadMovieList(
-        `https://imdb-api.com/en/API/Title/k_1yw64100/${location.state.id}`
+        `https://imdb-api.com/en/API/Title/k_1yw64100/${location.state}`
       )
     );
   }, [id]);
 
   useEffect(() => {
-    dispatch(loadSingleImages(location.state.id));
+    dispatch(loadSingleImages(location.state));
   }, [id]);
 
   console.log(location);

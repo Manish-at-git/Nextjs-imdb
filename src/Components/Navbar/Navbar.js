@@ -97,9 +97,9 @@ function Navbar() {
             <FontAwesomeIcon icon={faBookmark} className="nav-icons" />
             Watchlist
           </a>
-          <a src="" className="SignIn">
+          <NavLink to="/signin" className="SignIn">
             Sign In
-          </a>
+          </NavLink>
           <span className="lang">
             EN
             <FontAwesomeIcon icon={faCaretDown} className="nav-icons" />

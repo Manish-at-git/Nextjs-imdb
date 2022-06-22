@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import WhatToWatch from "../WhatToWatch/WhatToWatch";
 
+import { NavLink } from "react-router-dom";
+
 function SignIn() {
   const mystyle = {
     display: "flex",
@@ -31,9 +33,9 @@ function SignIn() {
             <div className="Save-shows-and-movies">
               Save shows and movies to keep track of what you want to watch.
             </div>
-            <a href="" className="Sign-in-to-IMDb">
+            <NavLink to="/signin" className="Sign-in-to-IMDb">
               Sign in to IMDb
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>

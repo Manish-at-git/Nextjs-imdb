@@ -30,14 +30,15 @@ function App() {
       <Fragment>
         <BrowserRouter>
           <Navbar />
-          <Authentication />
-          {/* <Routes>
+
+          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="top250" element={<MovieList />} />
             <Route path="popular" element={<MovieList />} />
             <Route path="grid" element={<Grid />} />
             <Route path="/title/:id" element={<SingleMovie />} />
-          </Routes> */}
+            <Route path="/signin" element={<Authentication />} />
+          </Routes>
         </BrowserRouter>
       </Fragment>
     </Provider>

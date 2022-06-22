@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -43,10 +45,11 @@ function Authentication() {
       setShow(false);
     } catch (error) {
       errorMessage = error.message;
-      console.log(error.message);
+      console.log(errorMessage);
       setShow(true);
     }
   };
+  console.log(errorMessage);
 
   const login = async () => {
     try {
@@ -56,8 +59,10 @@ function Authentication() {
         loginPassword
       );
       console.log(user);
+      setShow(false);
     } catch (error) {
       console.log(error.message);
+      setShow(true);
     }
   };
 
@@ -65,55 +70,76 @@ function Authentication() {
     await signOut(auth);
   };
 
-  let registerData = { registerEmail, registerPassword };
+  // let registerData = { registerEmail, registerPassword };
 
   return (
-    <div className="App">
-      <div>
-        <h3> Register User </h3>
-        <input
-          placeholder="Email..."
-          onChange={(event) => {
-            setRegisterEmail(event.target.value);
-          }}
-        />
-        <input
-          placeholder="Password..."
-          onChange={(event) => {
-            setRegisterPassword(event.target.value);
-          }}
-        />
-        {console.log(registerEmail, registerPassword)}
-        <button onClick={register}> Create User</button>
-      </div>
+    <div className="Auth">
+      <Container>
+        <Row className="auth-row">
+          <Col lg={3}>
+            <div className="Authentication">
+              <div className="Register">
+                <h5 className="register-user"> Create Account</h5>
+                <input
+                  className="auth-email"
+                  placeholder="Email..."
+                  onChange={(event) => {
+                    setRegisterEmail(event.target.value);
+                  }}
+                />
+                <input
+                  className="auth-pass"
+                  placeholder="Password..."
+                  onChange={(event) => {
+                    setRegisterPassword(event.target.value);
+                  }}
+                />
+                {console.log(registerEmail, registerPassword)}
+                <button className="auth-button" onClick={register}>
+                  {" "}
+                  Create User
+                </button>
+              </div>
 
-      <div>
-        <h3> Login </h3>
-        <input
-          placeholder="Email..."
-          onChange={(event) => {
-            setLoginEmail(event.target.value);
-          }}
-        />
-        <input
-          placeholder="Password..."
-          onChange={(event) => {
-            setLoginPassword(event.target.value);
-          }}
-        />
+              <div className="Login">
+                <h5 className="login-user"> Login </h5>
+                <input
+                  className="auth-email"
+                  placeholder="Email..."
+                  onChange={(event) => {
+                    setLoginEmail(event.target.value);
+                  }}
+                />
+                <input
+                  className="auth-pass"
+                  placeholder="Password..."
+                  onChange={(event) => {
+                    setLoginPassword(event.target.value);
+                  }}
+                />
 
-        <button onClick={login}> Login</button>
-      </div>
+                <button className="auth-button" onClick={login}>
+                  {" "}
+                  Login
+                </button>
+              </div>
 
-      <h4> User Logged In: </h4>
-      {userLogged?.email}
-      {/* {auth.currentUser.email} */}
+              <small className="logged-user"> User Logged In: </small>
+              {userLogged?.email}
+              {/* {auth.currentUser.email} */}
 
-      <button onClick={logout}> Sign Out </button>
+              <button className="auth-button" onClick={logout}>
+                {" "}
+                Sign Out{" "}
+              </button>
 
-      <Alert show={show} variant="danger">
-        <Alert.Heading>{show ? errorMessage : null}</Alert.Heading>
-      </Alert>
+              <Alert show={show} variant="danger">
+                <Alert.Heading>Error</Alert.Heading>
+              </Alert>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
