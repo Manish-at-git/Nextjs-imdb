@@ -1,9 +1,15 @@
 import { takeEvery, takeLatest } from "redux-saga/effects";
 import { call, put } from "redux-saga/effects";
-import { MOVIELISTDATA, SEARCH, SINGLEMOVIE } from "../constants/constants";
+import {
+  MOVIELISTDATA,
+  REGISTER,
+  SEARCH,
+  SINGLEMOVIE,
+} from "../constants/constants";
 import { fetchImages } from "../API/index";
 import { fetchSearch } from "../API/searchAPI";
 import { singleMovieImages } from "../API/singleMovieImages";
+import { register } from "../API/register";
 
 import {
   setMovieList,
@@ -12,6 +18,8 @@ import {
   setSearchError,
   setSingleImagesData,
   setSingleImagesError,
+  setRegisterData,
+  setRegisterError,
 } from "../actions";
 
 function* handleImagesLoad(action) {
@@ -47,8 +55,21 @@ function* handleLoadSingleMovie(action) {
   }
 }
 
+// function* handleLoadRegister(action) {
+//   try {
+//     // const { registerEmail, registerPassword } = action.payload;
+//     // console.log(registerEmail, registerPassword);
+//     // console.log(action.payload);
+//     const data = yield call(register, action.payload);
+//     yield put(setRegisterData(data));
+//   } catch (error) {
+//     yield put(setRegisterError(error.toString()));
+//   }
+// }
+
 export default function* watchImagesLoad() {
   yield takeLatest(MOVIELISTDATA.LOAD, handleImagesLoad);
   yield takeLatest(SEARCH.LOAD, handleSearchLoad);
   yield takeLatest(SINGLEMOVIE.LOAD, handleLoadSingleMovie);
+  // yield takeLatest(REGISTER.LOAD, handleLoadRegister);
 }

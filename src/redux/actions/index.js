@@ -4,7 +4,62 @@ import {
   NAVBARTOGGLED,
   SEARCH,
   SINGLEMOVIE,
+  // SIGNIN,
+  // SIGNOUT,
+  // REGISTER,
 } from "../constants/constants";
+
+// const loadSignIn = (payload) => {
+//   // console.log("url:", url);
+//   return {
+//     type: SIGNIN.LOAD,
+//     payload,
+//   };
+// };
+// const setSignInData = (payload) => {
+//   // console.log("url:", url);
+//   return {
+//     type: SIGNIN.LOAD_SUCCESS,
+//     payload,
+//   };
+// };
+
+// const setSignInError = (error) => ({
+//   type: SIGNIN.LOAD_FAIL,
+//   error,
+// });
+
+// const loadRegister = (payload) => {
+//   console.log("actionnnnnnnnnnnnn", payload);
+//   return {
+//     type: REGISTER.LOAD,
+//     payload,
+//   };
+// };
+// const setRegisterData = (payload) => {
+//   // console.log("url:", url);
+//   return {
+//     type: REGISTER.LOAD_SUCCESS,
+//     payload,
+//   };
+// };
+
+// const setRegisterError = (error) => ({
+//   type: REGISTER.LOAD_FAIL,
+//   error,
+// });
+
+// const loadSignOut = () => ({
+//   type: SIGNOUT.LOAD,
+// });
+// const setSignOutData = (user) => ({
+//   type: SIGNOUT.LOAD_SUCCESS,
+//   user,
+// });
+// const setSignOutError = (user) => ({
+//   type: SIGNOUT.LOAD_SUCCESS,
+//   user,
+// });
 
 const loadMovieList = (url) => {
   console.log("url:", url);
@@ -75,4 +130,10 @@ export {
   loadSingleImages,
   setSingleImagesData,
   setSingleImagesError,
+  // loadRegister,
+  // setRegisterData,
+  // setRegisterError,
+  // loadSignIn,
+  // setSignInData,
+  // setSignInError,
 };

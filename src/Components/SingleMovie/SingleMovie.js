@@ -40,13 +40,15 @@ function SingleMovie() {
   const singleImage = useSelector((state) => state.singleMovieImage);
   const dispatch = useDispatch();
 
+  console.log(singleImage);
+
   // let link = "tt0120338";
   // location ? (link = location.state.id) : (link = id);
 
   useEffect(() => {
     dispatch(
       loadMovieList(
-        `https://imdb-api.com/en/API/Title/k_5n5e2r9a/${location.state.id}`
+        `https://imdb-api.com/en/API/Title/k_1yw64100/${location.state.id}`
       )
     );
   }, [id]);
@@ -75,6 +77,12 @@ function SingleMovie() {
   var cast;
   var similars;
   var images;
+  var trailer;
+  try {
+    trailer = singleImage[0].trailerdata.linkEmbed;
+  } catch (error) {
+    console.log(error);
+  }
   try {
     genre = data[0].genreList.map((item) => (
       <span className="categories-action">{item.value}</span>
@@ -110,7 +118,7 @@ function SingleMovie() {
   }
 
   try {
-    similars = data[0].similars.slice(0, 10).map((item) => (
+    similars = data[0].similars.slice(0, 8).map((item) => (
       <NavLink
         to={`/title/${item.id}`}
         state={{
@@ -202,10 +210,9 @@ function SingleMovie() {
                 </div>
                 <div className="SingleMovie-trailer card-element">
                   <div className="embed-responsive embed-responsive-4by3">
-                    <iframe
-                      className="embed-responsive-item"
-                      src={singleImage[0].trailerdata.link}
-                    ></iframe>
+                    <iframe className="embed-responsive-item" src={trailer}>
+                      {/* {console.log(trailer)} */}
+                    </iframe>
                   </div>
                 </div>
                 <div className="SingleMovie-media card-element ">

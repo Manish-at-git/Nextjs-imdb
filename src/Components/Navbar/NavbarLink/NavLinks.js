@@ -21,39 +21,39 @@ function NavLinks({ slide }) {
       link: "/top250",
       Name: "Top 250 Movies",
       category: "Top 250 Movies",
-      url: "https://imdb-api.com/en/API/Top250Movies/k_aw8n1uz1",
+      url: "https://imdb-api.com/en/API/Top250Movies/k_1yw64100",
     },
     {
       link: "/popular",
-      Name: "Rating",
-      category: "Rating",
-      url: "https://jsonplaceholder.typicode.com/comments",
+      Name: "Popular Movies",
+      category: "popular",
+      url: "https://imdb-api.com/en/API/MostPopularMovies/k_1yw64100",
     },
     {
       link: "/popular",
       Name: "Box Office",
       category: "Top Box Office",
-      url: "https://jsonplaceholder.typicode.com/users",
+      url: "https://imdb-api.com/en/API/BoxOffice/k_1yw64100",
     },
   ];
   const TV = [
     {
       link: "/top250",
-      Name: "Top 250",
+      Name: "Top 250 TV Shows",
       category: "Top 250 TV Shows",
-      url: "https://jsonplaceholder.typicode.com/users",
+      url: "https://imdb-api.com/en/API/Top250TVs/k_1yw64100",
     },
     {
       link: "/popular",
-      Name: "Top",
+      Name: "Popular TV Shows",
       category: "Popular TV Shows",
-      url: "https://jsonplaceholder.typicode.com/comments",
+      url: "https://imdb-api.com/en/API/MostPopularTVs/k_1yw64100",
     },
     {
       link: "/popular",
       Name: "Rating",
       category: "Rating",
-      url: "https://jsonplaceholder.typicode.com/users",
+      url: "https://imdb-api.com/en/API/MostPopularTVs/k_1yw64100",
     },
   ];
   const Awards = [

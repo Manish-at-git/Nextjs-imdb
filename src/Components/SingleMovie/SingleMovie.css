@@ -7,6 +7,11 @@
   color: white;
 }
 
+.SingleMovie-heading-title {
+  display: flex;
+  align-items: center;
+}
+
 .block {
   display: block;
   font-size: 12px;
@@ -209,6 +214,8 @@
 iframe {
   flex: 1;
   width: 100%;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .mainbar {

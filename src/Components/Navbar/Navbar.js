@@ -109,6 +109,7 @@ function Navbar() {
       </div>
       {search ? <Search props={searchdata} /> : null}
       {console.log(searchdata)}
+      {/* <Search /> */}
     </>
   );
 }
