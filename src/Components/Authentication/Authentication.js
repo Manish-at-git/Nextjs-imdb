@@ -11,7 +11,7 @@ import "./Authentication.css";
 import { auth } from "../../firebase/firebase-config";
 
 import { useDispatch, useSelector } from "react-redux";
-import { loadRegister } from "../../redux/actions";
+import { loadSignIn, loadSignOut } from "../../redux/actions";
 import { Alert } from "react-bootstrap";
 
 function Authentication() {
@@ -60,6 +60,8 @@ function Authentication() {
       );
       console.log(user);
       setShow(false);
+
+      // dispatch(loadSignIn(userLogged.email));
     } catch (error) {
       console.log(error.message);
       setShow(true);
@@ -70,7 +72,10 @@ function Authentication() {
     await signOut(auth);
   };
 
+  // let userLoggedIn;
+
   // let registerData = { registerEmail, registerPassword };
+  // userLogged ? (userLoggedIn = userLogged.email) : (userLoggedIn = {});
 
   return (
     <div className="Auth">
@@ -95,7 +100,13 @@ function Authentication() {
                   }}
                 />
                 {console.log(registerEmail, registerPassword)}
-                <button className="auth-button" onClick={register}>
+                <button
+                  className="auth-button"
+                  onClick={() => {
+                    register();
+                    dispatch(loadSignIn(registerEmail));
+                  }}
+                >
                   {" "}
                   Create User
                 </button>
@@ -118,7 +129,13 @@ function Authentication() {
                   }}
                 />
 
-                <button className="auth-button" onClick={login}>
+                <button
+                  className="auth-button"
+                  onClick={() => {
+                    login();
+                    dispatch(loadSignIn(registerEmail));
+                  }}
+                >
                   {" "}
                   Login
                 </button>
@@ -128,7 +145,13 @@ function Authentication() {
               {userLogged?.email}
               {/* {auth.currentUser.email} */}
 
-              <button className="auth-button" onClick={logout}>
+              <button
+                className="auth-button"
+                onClick={() => {
+                  logout();
+                  dispatch(loadSignOut());
+                }}
+              >
                 {" "}
                 Sign Out{" "}
               </button>

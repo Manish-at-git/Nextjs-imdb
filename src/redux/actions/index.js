@@ -4,18 +4,22 @@ import {
   NAVBARTOGGLED,
   SEARCH,
   SINGLEMOVIE,
-  // SIGNIN,
-  // SIGNOUT,
+  SIGNIN,
+  SIGNOUT,
   // REGISTER,
 } from "../constants/constants";
 
-// const loadSignIn = (payload) => {
-//   // console.log("url:", url);
-//   return {
-//     type: SIGNIN.LOAD,
-//     payload,
-//   };
-// };
+const loadSignIn = (payload) => {
+  console.log("url:", payload);
+  return {
+    type: SIGNIN,
+    payload,
+  };
+};
+
+const loadSignOut = () => ({
+  type: SIGNOUT,
+});
 // const setSignInData = (payload) => {
 //   // console.log("url:", url);
 //   return {
@@ -49,9 +53,6 @@ import {
 //   error,
 // });
 
-// const loadSignOut = () => ({
-//   type: SIGNOUT.LOAD,
-// });
 // const setSignOutData = (user) => ({
 //   type: SIGNOUT.LOAD_SUCCESS,
 //   user,
@@ -133,7 +134,8 @@ export {
   // loadRegister,
   // setRegisterData,
   // setRegisterError,
-  // loadSignIn,
+  loadSignIn,
+  loadSignOut,
   // setSignInData,
   // setSignInError,
 };

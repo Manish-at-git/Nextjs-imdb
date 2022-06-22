@@ -1,18 +1,16 @@
-import { REGISTER } from "../constants/constants";
-import { auth } from "../../firebase/firebase-config";
+import { SIGNIN, SIGNOUT } from "../constants/constants";
+// import { auth } from "../../firebase/firebase-config";
 
-let email = auth.currentUser.email;
+// let email = auth.currentUser.email;
 
 const register = (state = [], action) => {
-  console.log(action, "reducer");
-  if (action.type === REGISTER.LOAD_SUCCESS) {
-    // let email = action.payload.user.email;
-    // state = [];
-    // {
-    // //   console.log(email, "reducer email");
-    // }
-    console.log(email, "return reduer");
-    return email;
+  if (action.type === SIGNIN) {
+    // return email;
+    console.log(action.payload, "reducer");
+    return action.payload;
+  } else if (action.type === SIGNOUT) {
+    // console.log(action.payload, "reducer");
+    return (state = []);
   }
   return state;
 };

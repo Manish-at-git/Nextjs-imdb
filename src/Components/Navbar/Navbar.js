@@ -23,9 +23,10 @@ import { loadSearch } from "../../redux/actions/index";
 function Navbar() {
   const toggle = useSelector((state) => state.navbarToggle);
   const searchdata = useSelector((state) => state.search);
+  const signinData = useSelector((state) => state.register);
   const dispatch = useDispatch();
   let navbarNotToggled = true;
-  // console.log(searchdata[0].errorMessage);
+  console.log(signinData);
 
   const changeState = () => {
     dispatch(navbarToggle(navbarNotToggled));
@@ -98,7 +99,8 @@ function Navbar() {
             Watchlist
           </a>
           <NavLink to="/signin" className="SignIn">
-            Sign In
+            {console.log(signinData)}
+            {signinData == "" ? "Sign In" : "Sign Out"}
           </NavLink>
           <span className="lang">
             EN

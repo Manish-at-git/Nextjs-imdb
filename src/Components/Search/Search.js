@@ -25,9 +25,7 @@ function Search(props) {
           <Col lg={11} className="search-float-content">
             <NavLink
               to={`/title/${item.id}`}
-              state={{
-                id: `${item.id}`,
-              }}
+              state={item.id}
               className="search-NavLink"
             >
               <div>{item.title}</div>

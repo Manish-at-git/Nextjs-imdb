@@ -47,9 +47,10 @@ function MovieList() {
           />
           <small className="table-row">
             {user.rank}.{" "}
-            <NavLink to={`/title/${user.id}`}>
+            <NavLink to={`/title/${user.id}`} state={user.id}>
               <span className="blueName">{user.title}</span>
             </NavLink>
+            {console.log(user.id)}
           </small>
         </td>
         <td

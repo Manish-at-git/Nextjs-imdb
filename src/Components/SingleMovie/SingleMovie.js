@@ -41,7 +41,7 @@ function SingleMovie() {
   const dispatch = useDispatch();
 
   console.log(singleImage);
-  console.log(location.state);
+  console.log(location);
 
   // let link = "tt0120338";
   // location ? (link = location.state.id) : (link = id);
@@ -122,9 +122,7 @@ function SingleMovie() {
     similars = data[0].similars.slice(0, 8).map((item) => (
       <NavLink
         to={`/title/${item.id}`}
-        state={{
-          id: `${item.id}`,
-        }}
+        state={item.id}
         className="search-NavLink"
       >
         <div className="single-sidebar-box">
