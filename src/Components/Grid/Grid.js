@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import "./Grid.css";
 import { loadMovieList } from "../../redux/actions";
 
-function Grid(props) {
+function Grid() {
   const location = useLocation();
   // console.log(location);
   const data = useSelector((state) => state.images[0].items);

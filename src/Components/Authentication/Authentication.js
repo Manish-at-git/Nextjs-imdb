@@ -124,11 +124,12 @@ function Authentication() {
                   }}
                 />
 
+                {console.log(loginEmail)}
                 <button
                   className="auth-button"
                   onClick={() => {
                     login();
-                    dispatch(loadSignIn(registerEmail));
+                    dispatch(loadSignIn(loginEmail));
                   }}
                 >
                   {" "}
