@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { NavLink } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faCancel,
+  faCaretDown,
+  faCross,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -34,9 +40,31 @@ function Navbar() {
   console.log(toggle);
   let slide = {};
   toggle ? (slide = { position: "absolute", top: "-100%" }) : (slide = null);
-
+  // //////////////////////////////////////////////////////////////h
   const [search, setSearch] = useState("");
+  const debounce = (func) => {
+    let timer;
+    return function (...args) {
+      const context = this;
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(() => {
+        timer = null;
+        func.apply(context, args);
+      }, 1000);
+    };
+  };
 
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+
+    dispatch(loadSearch(event.target.value));
+  };
+
+  const optimizedVersion = useCallback(debounce(handleChange), []);
+  // //////////////////////////////////////////////////////////////h
+  console.log(search);
   return (
     <>
       <div className="container-fluid Navbar-main">
@@ -53,13 +81,11 @@ function Navbar() {
               className="search-input"
               type="text"
               placeholder="Search IMDb"
-              onChange={(event) => {
-                setSearch(event.target.value);
-                console.log(search);
-              }}
+              onChange={optimizedVersion}
+              // value={search}
             />
             <FontAwesomeIcon
-              icon={faSearch}
+              icon={faXmark}
               className="iconss"
               style={{
                 color: "grey",
@@ -69,7 +95,8 @@ function Navbar() {
                 marginLeft: "2px",
               }}
               onClick={() => {
-                dispatch(loadSearch(search));
+                setSearch("");
+                document.querySelector(".search-input").value = "";
               }}
             />
           </span>
@@ -91,7 +118,7 @@ function Navbar() {
         <NavLinks slide={slide} />
       </div>
       {search ? <Search props={searchdata} /> : null}
-      {/* {console.log(searchdata)} */}
+      {console.log(search)}
       {/* <Search /> */}
     </>
   );

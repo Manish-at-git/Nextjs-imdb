@@ -24,8 +24,8 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="top250" element={<MovieList />} />
-            <Route path="popular" element={<MovieList />} />
+            <Route path=":category" element={<MovieList />} />
+            {/* <Route path="popular" element={<MovieList />} /> */}
             <Route path="grid" element={<Grid />} />
             <Route path="/title/:id" element={<SingleMovie />} />
             <Route path="/signin" element={<Authentication />} />

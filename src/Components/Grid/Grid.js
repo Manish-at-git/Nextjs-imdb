@@ -4,7 +4,7 @@ import Cards from "../Cards/Card";
 import WhatToWatch from "../WhatToWatch/WhatToWatch";
 
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import "./Grid.css";
 import { loadMovieList } from "../../redux/actions";
@@ -28,7 +28,13 @@ function Grid() {
           <h1 className="grid-heading">What to Watch</h1>
           {data.map((item) => (
             <Col className="Grid-Card">
-              <Cards item={item} />
+              <NavLink
+                to={`/title/${item.id}`}
+                state={item.id}
+                className="NavLink"
+              >
+                <Cards item={item} />
+              </NavLink>
             </Col>
           ))}
         </Row>

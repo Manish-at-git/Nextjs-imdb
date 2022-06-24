@@ -11,9 +11,9 @@ function Home() {
     <div>
       {/* <Grid /> */}
       <MoviePick
-        heading=""
-        recommend=""
-        title="In Theatre"
+        heading="What To Watch"
+        recommend="Get More Recommendations"
+        title="Box Office of All Time"
         text="TV Shows and Movies just for you"
         // url="https://imdb-api.com/en/API/Top250Movies/k_691fo2uh"
         url="https://imdb-api.com/en/API/BoxOffice/k_67o8cg68"
@@ -24,18 +24,17 @@ function Home() {
         title="In Theatre"
         text="TV Shows and Movies just for you"
         // url="https://imdb-api.com/en/API/Top250Movies/k_691fo2uh"
-        url="https://imdb-api.com/en/API/InTheaters/k_67o8cg68"
+        url="https://imdb-api.com/en/API/Top250Movies/k_67o8cg68"
       />
+      <SignIn />
       <MoviePick
-        heading="What To Watch"
-        recommend="Get More Recommendations"
-        title="Box Office of All Time"
+        heading=""
+        recommend=""
+        title="Top Movies"
         text="TV Shows and Movies just for you"
         // url="https://imdb-api.com/en/API/Top250Movies/k_691fo2uh"
         url="https://imdb-api.com/en/API/Top250Movies/k_67o8cg68"
       />
-
-      <SignIn />
 
       {/* <Slider /> */}
     </div>
