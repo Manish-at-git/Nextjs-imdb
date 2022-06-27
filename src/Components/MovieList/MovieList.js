@@ -81,7 +81,6 @@ function MovieList() {
       .sort((a, b) => {
         return sortDirection === "Ranking" ? a.rank - b.rank : a.year - b.year;
       })
-      .slice(0, 20)
       .filter((user) => {
         if (searchTerm == "") {
           return user;

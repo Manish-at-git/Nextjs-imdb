@@ -118,13 +118,13 @@ function Navbar() {
           <img className="logo logo2" src={NavbarLogo2} />
           <div className="verticle-line"></div>
 
-          {!(signinData === "") ? (
-            <NavLink to="/watchlist" className="watchlist">
+          {signinData == "" ? (
+            <NavLink to="/register" className="watchlist">
               <FontAwesomeIcon icon={faBookmark} className="nav-icons" />
               Watchlist
             </NavLink>
           ) : (
-            <NavLink to="/register" className="watchlist">
+            <NavLink to="/watchlist" className="watchlist">
               <FontAwesomeIcon icon={faBookmark} className="nav-icons" />
               Watchlist
             </NavLink>

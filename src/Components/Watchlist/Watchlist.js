@@ -27,7 +27,7 @@ function Watchlist() {
               <div className="MovieList-head">
                 <h5>IMDb Charts</h5>
                 <h3 className="MovieList-header">
-                  {signedIn.split("@")[0]}'s Watchlist
+                  {/* {signedIn.split("@")[0]}'s  */}Watchlist
                 </h3>
                 <small className="MovieList-byline">
                   IMDb Watchlist as rated by regular IMDb voters.

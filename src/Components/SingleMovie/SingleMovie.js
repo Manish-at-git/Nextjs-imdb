@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import BeatLoader from "react-spinners/BeatLoader";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -42,6 +43,11 @@ function SingleMovie() {
   // console.log(singleImage);
   console.log(location);
   let bookmarked = [];
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
 
   useEffect(() => {
     dispatch(
@@ -156,7 +162,16 @@ function SingleMovie() {
   return (
     <>
       {isLoading ? (
-        <div>Loading...</div>
+        <div
+          style={{
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            paddingTop: "300px",
+          }}
+        >
+          <BeatLoader color="#f5c518" cssOverride={override} size={20} />
+        </div>
       ) : (
         <>
           <div className="SingleMovie-main1 container-fluid">
