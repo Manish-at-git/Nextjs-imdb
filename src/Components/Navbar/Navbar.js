@@ -32,7 +32,7 @@ import { Nav } from "react-bootstrap";
 function Navbar() {
   const toggle = useSelector((state) => state.navbarToggle);
   const searchdata = useSelector((state) => state.search);
-  const signinData = useSelector((state) => state.register);
+  const signinData = useSelector((state) => state.registeredUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -97,29 +97,38 @@ function Navbar() {
               onChange={optimizedVersion}
               // value={search}
             />
-            <FontAwesomeIcon
-              icon={faXmark}
-              className="iconss"
-              style={{
-                color: "grey",
-                backgroundColor: "#fff",
-                padding: "9px 10px",
-                borderRadius: "3px",
-                marginLeft: "2px",
-              }}
-              onClick={() => {
-                setSearch("");
-                document.querySelector(".search-input").value = "";
-              }}
-            />
+            {search && (
+              <FontAwesomeIcon
+                icon={faXmark}
+                className="iconss"
+                style={{
+                  color: "grey",
+                  backgroundColor: "#fff",
+                  padding: "9px 10px",
+                  borderRadius: "3px",
+                  marginLeft: "2px",
+                }}
+                onClick={() => {
+                  setSearch("");
+                  document.querySelector(".search-input").value = "";
+                }}
+              />
+            )}
           </span>
           <img className="logo logo2" src={NavbarLogo2} />
           <div className="verticle-line"></div>
 
-          <NavLink to="/watchlist" className="watchlist">
-            <FontAwesomeIcon icon={faBookmark} className="nav-icons" />
-            Watchlist
-          </NavLink>
+          {!(signinData === "") ? (
+            <NavLink to="/watchlist" className="watchlist">
+              <FontAwesomeIcon icon={faBookmark} className="nav-icons" />
+              Watchlist
+            </NavLink>
+          ) : (
+            <NavLink to="/register" className="watchlist">
+              <FontAwesomeIcon icon={faBookmark} className="nav-icons" />
+              Watchlist
+            </NavLink>
+          )}
 
           {signinData == "" ? (
             <NavLink to="/register" className="SignIn">

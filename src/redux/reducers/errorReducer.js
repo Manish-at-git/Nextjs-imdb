@@ -1,4 +1,4 @@
-import { MOVIELISTDATA } from "../constants/constants";
+import { MOVIELISTDATA } from "../actionTypes/actionTypes";
 
 const errorReducer = (state = null, action) => {
   switch (action.type) {

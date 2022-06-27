@@ -1,4 +1,4 @@
-import { NAVBARCLICKED, NAVBARTOGGLED } from "../constants/constants";
+import { NAVBARCLICKED, NAVBARTOGGLED } from "../actionTypes/actionTypes";
 
 const initialState = {
   navbarToggle: true,

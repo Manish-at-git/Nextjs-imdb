@@ -18,7 +18,7 @@ function Links(props) {
           to={item.url}
           state={{
             title: `${item.category}`,
-            url: `https://imdb-api.com/en/API/${item.url}/k_udicaalo`,
+            url: `https://imdb-api.com/en/API/${item.url}/k_nrcppo4w`,
           }}
           key={id}
         >

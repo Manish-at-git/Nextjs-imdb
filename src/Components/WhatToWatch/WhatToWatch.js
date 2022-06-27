@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 function WhatToWatch(props) {
+  let url = props.title.trim();
+
   return (
     <div className="MoviePick-heading container" style={props.style}>
       <div className="WhatToWatch">
@@ -26,7 +28,7 @@ function WhatToWatch(props) {
         <FontAwesomeIcon icon="fa-solid fa-pipe" />
         <NavLink
           className="NavLink"
-          to="/grid"
+          to={`/what-to-watch/${url}`}
           style={props.style}
           state={{ url: `${props.url}` }}
         >

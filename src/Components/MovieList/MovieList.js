@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./MovieList.css";
 
-import image from "./share.png";
+import image from "../../assets/images/share.png";
 import { loadMovieList } from "../../redux/actions";
 
 import Categories from "./Categories/Categories";
@@ -18,9 +18,10 @@ function MovieList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [errorMessage, setErrorMEssage] = useState(false);
 
+  const navigate = useNavigate();
   const location = useLocation();
-  const datalist = useSelector((state) => state.images);
-  const signedIn = useSelector((state) => state.register);
+  const datalist = useSelector((state) => state.movielist);
+  const signedIn = useSelector((state) => state.registeredUser);
   const dispatch = useDispatch();
   let localStorageList = JSON.parse(localStorage.getItem(signedIn)) || [];
 
@@ -48,14 +49,21 @@ function MovieList() {
   const watchlist = (user) => {
     console.log(signedIn);
     if (!(signedIn.toString().trim() === "")) {
-      console.log(user);
-      console.log(signedIn);
-      localStorageList.push(user);
-      console.log(localStorageList);
-      localStorage.setItem(signedIn, JSON.stringify(localStorageList));
-      setErrorMEssage(false);
+      let duplicate = false;
+      localStorageList.forEach((item) => {
+        if (item.id === user.id) {
+          duplicate = true;
+          console.log("dupliocate");
+          console.log(duplicate);
+        }
+      });
+
+      if (duplicate === false) {
+        localStorageList.push(user);
+        localStorage.setItem(signedIn, JSON.stringify(localStorageList));
+      }
     } else {
-      setErrorMEssage(true);
+      navigate("/register");
     }
   };
   try {
@@ -142,6 +150,12 @@ function MovieList() {
   return (
     <div className="MovieList">
       <div className="container MovieList-container">
+        {errorMessage && (
+          <Alert variant="danger">
+            <Alert.Heading>Please Sign in to bookmark</Alert.Heading>
+          </Alert>
+        )}
+
         {errorMessage && (
           <Alert variant="danger">
             <Alert.Heading>Please Sign in to bookmark</Alert.Heading>

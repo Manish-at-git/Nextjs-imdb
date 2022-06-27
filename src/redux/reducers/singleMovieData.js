@@ -1,9 +1,9 @@
-import { SINGLEMOVIE } from "../constants/constants";
+import { SINGLEMOVIE } from "../actionTypes/actionTypes";
 
 let dataImage = {};
 let dataTrailer = {};
 
-const singleMovieImage = (state = [], action) => {
+const singleMovieData = (state = [], action) => {
   // const dataImage = action.data.imagesData;
 
   if (action.type === SINGLEMOVIE.LOAD_SUCCESS) {
@@ -18,4 +18,4 @@ const singleMovieImage = (state = [], action) => {
   return state;
 };
 
-export default singleMovieImage;
+export default singleMovieData;

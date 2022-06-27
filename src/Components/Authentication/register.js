@@ -20,7 +20,7 @@ let errorMsg;
 function Register() {
   const nav = useNavigate();
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.register);
+  const data = useSelector((state) => state.registeredUser);
   // const singleImage = useSelector((state) => state.singleMovieImage);
 
   const navigate = useNavigate();

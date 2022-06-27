@@ -20,7 +20,7 @@ import Card from "../Cards/Card";
 import "./MoviePick.css";
 
 function MoviePick(props) {
-  const data = useSelector((state) => state.images);
+  const data = useSelector((state) => state.movielist);
   // const isLoading = useSelector((state) => state.isLoading);
 
   const dispatch = useDispatch();

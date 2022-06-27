@@ -7,12 +7,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Components/Navbar/Navbar";
 import MovieList from "./Components/MovieList/MovieList";
-import Home from "./Components/Pages/Home";
+import Home from "./Pages/Home";
 
 import configureStore from "./redux/store/store";
 import Grid from "./Components/Grid/Grid";
 import SingleMovie from "./Components/SingleMovie/SingleMovie";
-import Authentication from "./Components/Authentication/Authentication";
+import SignIn from "./Components/Authentication/SignIn";
 import Register from "./Components/Authentication/register";
 import Watchlist from "./Components/Watchlist/Watchlist";
 const store = configureStore();
@@ -27,11 +27,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path=":category" element={<MovieList />} />
-            {/* <Route path="popular" element={<MovieList />} /> */}
-            <Route path="grid" element={<Grid />} />
+            <Route path="/what-to-watch/:movies" element={<Grid />} />
             <Route path="/title/:id" element={<SingleMovie />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/signin" element={<Authentication />} />
+            <Route path="/signin" element={<SignIn />} />
             <Route path="/watchlist" element={<Watchlist />} />
           </Routes>
         </BrowserRouter>

@@ -31,17 +31,19 @@ import "./SingleMovie.css";
 function SingleMovie() {
   const location = useLocation();
   const { id } = useParams();
-  const data = useSelector((state) => state.images);
-  const singleImage = useSelector((state) => state.singleMovieImage);
+  const data = useSelector((state) => state.movielist);
+  const singleData = useSelector((state) => state.singleMovieData);
+  const signedIn = useSelector((state) => state.registeredUser);
   const dispatch = useDispatch();
+  let localStorageList = JSON.parse(localStorage.getItem(signedIn)) || [];
 
-  console.log(singleImage);
+  // console.log(singleImage);
   console.log(location);
 
   useEffect(() => {
     dispatch(
       loadMovieList(
-        `https://imdb-api.com/en/API/Title/k_67o8cg68/${location.state}`
+        `https://imdb-api.com/en/API/Title/k_nrcppo4w/${location.state}`
       )
     );
   }, [id]);
@@ -49,6 +51,23 @@ function SingleMovie() {
   useEffect(() => {
     dispatch(loadSingleImages(location.state));
   }, [id]);
+
+  const watchlist = (user) => {
+    console.log(signedIn);
+    if (!(signedIn.toString().trim() === "")) {
+      console.log(user);
+      console.log(signedIn);
+      localStorageList.push(user);
+      console.log(localStorageList);
+
+      localStorage.setItem(signedIn, JSON.stringify(localStorageList));
+      // setErrorMEssage(false);
+
+      // setErrorMEssage(false);
+    } else {
+      // setErrorMEssage(true);
+    }
+  };
 
   // console.log(location);
 
@@ -60,7 +79,7 @@ function SingleMovie() {
   var images;
   var trailer;
   try {
-    trailer = singleImage[0].trailerdata.linkEmbed;
+    trailer = singleData[0].trailerdata.linkEmbed;
   } catch (error) {
     console.log(error);
   }
@@ -119,7 +138,7 @@ function SingleMovie() {
   }
 
   try {
-    images = singleImage[0].imagesData.items.slice(0, 10).map((item) => (
+    images = singleData[0].imagesData.items.slice(0, 10).map((item) => (
       <SwiperSlide>
         <div className="slider-image">
           <img src={item.image} />
@@ -239,7 +258,10 @@ function SingleMovie() {
                   className="SingleMovie-info watchlist-bookmark"
                   style={{ width: "40%" }}
                 >
-                  <div className="See-Showtime">
+                  <div
+                    className="See-Showtime"
+                    onClick={() => watchlist(...data)}
+                  >
                     <FontAwesomeIcon icon={faPlus} size="md" />
                     {"  "}
                     See Showtime

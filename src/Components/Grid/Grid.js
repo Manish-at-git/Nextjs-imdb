@@ -12,7 +12,7 @@ import { loadMovieList } from "../../redux/actions";
 function Grid() {
   const location = useLocation();
   // console.log(location);
-  const data = useSelector((state) => state.images[0].items);
+  const data = useSelector((state) => state.movielist[0].items);
   const dispatch = useDispatch();
 
   useEffect(() => {

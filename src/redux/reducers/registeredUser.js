@@ -1,6 +1,6 @@
-import { SIGNIN, SIGNOUT } from "../constants/constants";
+import { SIGNIN, SIGNOUT } from "../actionTypes/actionTypes";
 
-const register = (state = [], action) => {
+const registeredUser = (state = [], action) => {
   if (action.type === SIGNIN) {
     console.log(action.payload, "reducer");
     return action.payload;
@@ -10,4 +10,4 @@ const register = (state = [], action) => {
   return state;
 };
 
-export default register;
+export default registeredUser;

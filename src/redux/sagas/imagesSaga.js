@@ -5,7 +5,7 @@ import {
   REGISTER,
   SEARCH,
   SINGLEMOVIE,
-} from "../constants/constants";
+} from "../actionTypes/actionTypes";
 import { fetchImages } from "../API/index";
 import { fetchSearch } from "../API/searchAPI";
 import { singleMovieImages } from "../API/singleMovieImages";

@@ -7,7 +7,7 @@ import {
   SIGNIN,
   SIGNOUT,
   // REGISTER,
-} from "../constants/constants";
+} from "../actionTypes/actionTypes";
 
 const loadSignIn = (payload) => {
   console.log("url:", payload);

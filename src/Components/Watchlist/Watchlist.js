@@ -1,93 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Watchlist.css";
 
-import image from "./share.png";
-import { loadMovieList } from "../../redux/actions";
+import image from "../../assets/images/share.png";
 
 import Categories from "../MovieList/Categories/Categories";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as thinStar } from "@fortawesome/free-regular-svg-icons";
-import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faStar as solidStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Watchlist() {
-  const signedIn = useSelector((state) => state.register);
-  const dispatch = useDispatch();
+  const signedIn = useSelector((state) => state.registeredUser);
   let localStorageList = JSON.parse(localStorage.getItem(signedIn)) || [];
-
-  var list;
-  var sorted;
-
-  const watchlist = (user) => {
-    console.log(signedIn);
-    if (!(signedIn.toString().trim() === "")) {
-      console.log(user);
-      console.log(signedIn);
-      localStorageList.push(user);
-      console.log(localStorageList);
-      localStorage.setItem(signedIn, JSON.stringify(localStorageList));
-    } else {
-      console.log("error");
-    }
-  };
-  try {
-    list = localStorageList.map((user) => (
-      <tr>
-        <td>
-          <img
-            className="table-image"
-            src={user.image}
-            style={{ width: "50px" }}
-          />
-          <small className="table-row">
-            {user.rank}.{" "}
-            <NavLink
-              to={`/title/${user.id}`}
-              state={user.id}
-              className="MovieList-NavLink"
-            >
-              <span className="blueName">{user.title}</span>
-            </NavLink>
-            {/* <small>`${user.year}`</small> */}
-            <small style={{ fontSize: "0.9em" }}>{`(${user.year})`}</small>
-            {console.log(user.id)}
-          </small>
-        </td>
-        <td
-          style={{
-            fontSize: "0.8rem",
-          }}
-        >
-          <FontAwesomeIcon
-            icon={solidStar}
-            style={{
-              color: "#f5c518",
-              padding: "0 5px",
-            }}
-            size="lg"
-          />
-          <b>{user.imDbRating}</b>
-        </td>
-        <td>
-          <FontAwesomeIcon
-            icon={thinStar}
-            style={{ color: "grey", opacity: "0.5" }}
-          />
-        </td>
-        <td>
-          <FontAwesomeIcon
-            icon={faPlus}
-            style={{ color: "grey", cursor: "pointer" }}
-          />
-        </td>
-      </tr>
-    ));
-  } catch (error) {
-    console.log(error);
-  }
 
   return (
     <div className="MovieList">
@@ -97,7 +26,9 @@ function Watchlist() {
             <div className="MovieList-headerpage">
               <div className="MovieList-head">
                 <h5>IMDb Charts</h5>
-                <h3 className="MovieList-header">IMDb Watchlist</h3>
+                <h3 className="MovieList-header">
+                  {signedIn.split("@")[0]}'s Watchlist
+                </h3>
                 <small className="MovieList-byline">
                   IMDb Watchlist as rated by regular IMDb voters.
                 </small>
@@ -143,7 +74,63 @@ function Watchlist() {
                     </th>
                     <th></th>
                   </tr>
-                  {list}
+                  {signedIn ? (
+                    localStorageList.map((user) => (
+                      <tr>
+                        <td>
+                          <img
+                            className="table-image"
+                            src={user.image}
+                            style={{ width: "50px" }}
+                          />
+                          <small className="table-row">
+                            {user.rank ? user.rank : Math.ceil(user.imDbRating)}
+                            .{" "}
+                            <NavLink
+                              to={`/title/${user.id}`}
+                              state={user.id}
+                              className="MovieList-NavLink"
+                            >
+                              <span className="blueName">{user.title}</span>
+                            </NavLink>
+                            <small
+                              style={{ fontSize: "0.9em" }}
+                            >{`(${user.year})`}</small>
+                            {console.log(user.id)}
+                          </small>
+                        </td>
+                        <td
+                          style={{
+                            fontSize: "0.8rem",
+                          }}
+                        >
+                          <FontAwesomeIcon
+                            icon={solidStar}
+                            style={{
+                              color: "#f5c518",
+                              padding: "0 5px",
+                            }}
+                            size="lg"
+                          />
+                          <b>{user.imDbRating}</b>
+                        </td>
+                        <td>
+                          <FontAwesomeIcon
+                            icon={thinStar}
+                            style={{ color: "grey", opacity: "0.5" }}
+                          />
+                        </td>
+                        <td>
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            style={{ color: "green", cursor: "pointer" }}
+                          />
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <div>Please Sign In</div>
+                  )}
                 </table>
               </div>
             </div>

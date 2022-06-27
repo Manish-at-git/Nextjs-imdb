@@ -1,6 +1,6 @@
-import { MOVIELISTDATA } from "../constants/constants";
+import { MOVIELISTDATA } from "../actionTypes/actionTypes";
 
-const imageReducer = (state = [], action) => {
+const movielist = (state = [], action) => {
   if (action.type === MOVIELISTDATA.LOAD_SUCCESS) {
     state = [];
     {
@@ -11,4 +11,4 @@ const imageReducer = (state = [], action) => {
   return state;
 };
 
-export default imageReducer;
+export default movielist;

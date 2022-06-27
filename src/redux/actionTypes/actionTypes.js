@@ -19,7 +19,6 @@ const SINGLEMOVIE = {
 };
 
 const SIGNIN = "SIGNIN";
-// const REGISTER = "REGISTER"
 const SIGNOUT = "SIGNOUT";
 
 export {
@@ -29,6 +28,5 @@ export {
   SEARCH,
   SINGLEMOVIE,
   SIGNIN,
-  // REGISTER,
   SIGNOUT,
 };

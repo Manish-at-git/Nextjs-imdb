@@ -1,4 +1,4 @@
-import { SEARCH } from "../constants/constants";
+import { SEARCH } from "../actionTypes/actionTypes";
 
 const searchReducer = (state = [], action) => {
   if (action.type === SEARCH.LOAD_SUCCESS) {
