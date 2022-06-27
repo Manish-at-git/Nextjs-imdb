@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import BeatLoader from "react-spinners/BeatLoader";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { loadMovieList } from "../../redux/actions";
@@ -21,9 +22,15 @@ import "./MoviePick.css";
 
 function MoviePick(props) {
   const data = useSelector((state) => state.movielist);
-  // const isLoading = useSelector((state) => state.isLoading);
+  const isLoading = useSelector((state) => state.isLoading);
 
   const dispatch = useDispatch();
+
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
 
   useEffect(() => {
     dispatch(loadMovieList(props.url));
@@ -69,7 +76,23 @@ function MoviePick(props) {
               modules={[Pagination, Navigation]}
               className="mySwiper"
             >
-              {list}
+              {isLoading ? (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <BeatLoader
+                    color="#f5c518"
+                    cssOverride={override}
+                    size={20}
+                  />
+                </div>
+              ) : (
+                list
+              )}
             </Swiper>
           </div>
         </div>

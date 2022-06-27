@@ -33,6 +33,7 @@ function SingleMovie() {
   const { id } = useParams();
   const navigate = useNavigate();
   const data = useSelector((state) => state.movielist);
+  const isLoading = useSelector((state) => state.isLoading);
   const singleData = useSelector((state) => state.singleMovieData);
   const signedIn = useSelector((state) => state.registeredUser);
   const dispatch = useDispatch();
@@ -154,7 +155,9 @@ function SingleMovie() {
 
   return (
     <>
-      {data ? (
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
         <>
           <div className="SingleMovie-main1 container-fluid">
             <div className="SingleMovie container">
@@ -355,8 +358,6 @@ function SingleMovie() {
             </div>
           </div>
         </>
-      ) : (
-        <h1>No Movie</h1>
       )}
     </>
   );

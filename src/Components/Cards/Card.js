@@ -1,4 +1,6 @@
 import { Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,14 +11,43 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 import "./Card.css";
+import { useSelector } from "react-redux";
 
 function Cards(props) {
   // console.log(props.item.title);
+  const signedIn = useSelector((state) => state.registeredUser);
+  let localStorageList = JSON.parse(localStorage.getItem(signedIn)) || [];
+
+  const navigate = useNavigate();
+
+  const watchlist = (user) => {
+    console.log(signedIn);
+    if (!(signedIn.toString().trim() === "")) {
+      let duplicate = false;
+      localStorageList.forEach((item) => {
+        if (item.id === user.id) {
+          duplicate = true;
+          console.log("dupliocate");
+          console.log(duplicate);
+        }
+      });
+
+      if (duplicate === false) {
+        localStorageList.push(user);
+        localStorage.setItem(signedIn, JSON.stringify(localStorageList));
+      }
+    } else {
+      navigate("/register");
+    }
+  };
   return (
     <div className="AppCard">
       <Card className="Cards">
         <Card.Img variant="top" src={props.item.image} className="card-img" />
-        <span className="add-bookmark-span">
+        <span
+          className="add-bookmark-span"
+          onClick={() => watchlist(props.item)}
+        >
           <FontAwesomeIcon icon={Plus} size="lg" className="add-bookmark" />
         </span>
 

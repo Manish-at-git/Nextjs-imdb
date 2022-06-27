@@ -35,7 +35,7 @@ function Home() {
         title="Top Movies"
         text="TV Shows and Movies just for you"
         // url="https://imdb-api.com/en/API/Top250Movies/k_691fo2uh"
-        url="https://imdb-api.com/en/API/Top250Movies/k_fulo16js"
+        url="https://imdb-api.com/en/API/Top250Movies/k_pw119nae"
       />
 
       {/* <Slider /> */}

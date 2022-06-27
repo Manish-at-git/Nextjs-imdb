@@ -1,12 +1,22 @@
 import React, { useEffect } from "react";
+import BeatLoader from "react-spinners/BeatLoader";
+
 import "./Search.css";
 import { Container, Row, Col } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
 
 function Search(props) {
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
+  const isLoading = useSelector((state) => state.isLoading);
   let SeacrhData;
+  let errorData;
   console.log(props);
   try {
     SeacrhData = props.props[0].results.map((item) => (
@@ -34,7 +44,24 @@ function Search(props) {
   } catch (error) {
     console.log(error);
   }
-  return <Container className="SearchPop">{SeacrhData}</Container>;
+  return (
+    <Container className="SearchPop">
+      {isLoading ? (
+        <div
+          style={{
+            height: "400px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <BeatLoader color="#f5c518" cssOverride={override} size={15} />
+        </div>
+      ) : (
+        SeacrhData
+      )}
+    </Container>
+  );
 }
 
 export default Search;

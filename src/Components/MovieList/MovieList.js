@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import BeatLoader from "react-spinners/BeatLoader";
+
 import "./MovieList.css";
 
 import image from "../../assets/images/share.png";
@@ -22,6 +24,7 @@ function MovieList() {
   const location = useLocation();
   const datalist = useSelector((state) => state.movielist);
   const signedIn = useSelector((state) => state.registeredUser);
+  const isLoading = useSelector((state) => state.isLoading);
   const dispatch = useDispatch();
   let localStorageList = JSON.parse(localStorage.getItem(signedIn)) || [];
 
@@ -32,6 +35,12 @@ function MovieList() {
   useEffect(() => {
     dispatch(loadMovieList(location.state.url));
   }, [location.state.url]);
+
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
 
   // console.log(location.state.url);
   const showError = (error) => {
@@ -149,103 +158,117 @@ function MovieList() {
 
   return (
     <div className="MovieList">
-      <div className="container MovieList-container">
-        {errorMessage && (
-          <Alert variant="danger">
-            <Alert.Heading>Please Sign in to bookmark</Alert.Heading>
-          </Alert>
-        )}
-
-        {errorMessage && (
-          <Alert variant="danger">
-            <Alert.Heading>Please Sign in to bookmark</Alert.Heading>
-          </Alert>
-        )}
-        <div className="MovieList-main">
-          <div className="MovieList-page">
-            <div className="MovieList-headerpage">
-              <div className="MovieList-head">
-                <h5>IMDb Charts</h5>
-                <h3 className="MovieList-header">
-                  IMDb {location.state.title}
-                </h3>
-                <small className="MovieList-byline">
-                  IMDb {location.state.title} as rated by regular IMDb voters.
-                </small>
-              </div>
-              <div className="image">
-                <img src={image} />
-              </div>
-            </div>
-            <hr />
-            <div className="MovieList-LowerHeader">
-              <div className="MovieList-title">
-                <small className="showing">
-                  Showing {location.state.title}
-                </small>
-              </div>
-              <div className="MovieList-sort">
-                <label for="sort">Sort by : </label>
-                <select
-                  name="sort"
-                  id="sort"
-                  form="sortform"
-                  onChange={sortByYear}
-                >
-                  <option value="Ranking">Ranking</option>
-                  <option value="Release">Release</option>
-                </select>
-                <input
-                  type="text"
-                  placeholder="Search Here"
-                  id="search_input"
-                  onChange={(event) => setSearchTerm(event.target.value)}
-                />
-              </div>
-            </div>
-            <div className="MovieList-list">
-              <div>
-                <table>
-                  <tr style={{ border: "none" }}>
-                    <th
-                      style={{
-                        width: "70%",
-                        fontSize: "0.8rem",
-                        paddingLeft: "60px",
-                      }}
-                    >
-                      Rank & Title
-                    </th>
-                    <th
-                      style={{
-                        fontSize: "0.8rem",
-                      }}
-                    >
-                      <span>
-                        <span className="your-Rating">IMDb</span>
-                        <span className="your-Rating">Rating</span>
-                      </span>
-                    </th>
-                    <th
-                      style={{
-                        fontSize: "0.8rem",
-                      }}
-                    >
-                      <span>
-                        <span className="your-Rating">Your</span>
-                        <span className="your-Rating">Rating</span>
-                      </span>
-                    </th>
-                    <th></th>
-                  </tr>
-                  {list}
-                </table>
-              </div>
-            </div>
-          </div>
-          <Categories />
+      {isLoading ? (
+        <div
+          style={{
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            // alignItems: "center",
+            paddingTop: "300px",
+          }}
+        >
+          <BeatLoader color="#A9A9A9" cssOverride={override} size={20} />
         </div>
-      </div>
+      ) : (
+        <div className="container MovieList-container">
+          {errorMessage && (
+            <Alert variant="danger">
+              <Alert.Heading>Please Sign in to bookmark</Alert.Heading>
+            </Alert>
+          )}
+
+          {errorMessage && (
+            <Alert variant="danger">
+              <Alert.Heading>Please Sign in to bookmark</Alert.Heading>
+            </Alert>
+          )}
+          <div className="MovieList-main">
+            <div className="MovieList-page">
+              <div className="MovieList-headerpage">
+                <div className="MovieList-head">
+                  <h5>IMDb Charts</h5>
+                  <h3 className="MovieList-header">
+                    IMDb {location.state.title}
+                  </h3>
+                  <small className="MovieList-byline">
+                    IMDb {location.state.title} as rated by regular IMDb voters.
+                  </small>
+                </div>
+                <div className="image">
+                  <img src={image} />
+                </div>
+              </div>
+              <hr />
+              <div className="MovieList-LowerHeader">
+                <div className="MovieList-title">
+                  <small className="showing">
+                    Showing {location.state.title}
+                  </small>
+                </div>
+                <div className="MovieList-sort">
+                  <label for="sort">Sort by : </label>
+                  <select
+                    name="sort"
+                    id="sort"
+                    form="sortform"
+                    onChange={sortByYear}
+                  >
+                    <option value="Ranking">Ranking</option>
+                    <option value="Release">Release</option>
+                  </select>
+                  <input
+                    type="text"
+                    placeholder="Search Here"
+                    id="search_input"
+                    onChange={(event) => setSearchTerm(event.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="MovieList-list">
+                <div>
+                  <table>
+                    <tr style={{ border: "none" }}>
+                      <th
+                        style={{
+                          width: "70%",
+                          fontSize: "0.8rem",
+                          paddingLeft: "60px",
+                        }}
+                      >
+                        Rank & Title
+                      </th>
+                      <th
+                        style={{
+                          fontSize: "0.8rem",
+                        }}
+                      >
+                        <span>
+                          <span className="your-Rating">IMDb</span>
+                          <span className="your-Rating">Rating</span>
+                        </span>
+                      </th>
+                      <th
+                        style={{
+                          fontSize: "0.8rem",
+                        }}
+                      >
+                        <span>
+                          <span className="your-Rating">Your</span>
+                          <span className="your-Rating">Rating</span>
+                        </span>
+                      </th>
+                      <th></th>
+                    </tr>
+                    {list}
+                  </table>
+                </div>
+              </div>
+            </div>
+            <Categories />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
