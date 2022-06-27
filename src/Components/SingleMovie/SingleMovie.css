@@ -182,11 +182,16 @@
 }
 
 .Watchlist {
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #313131;
   font-weight: bold;
+}
+
+.Watchlist:hover {
+  color: rgb(190, 190, 190);
 }
 
 .See-Showtime {

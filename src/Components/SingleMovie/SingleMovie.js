@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,6 +31,7 @@ import "./SingleMovie.css";
 function SingleMovie() {
   const location = useLocation();
   const { id } = useParams();
+  const navigate = useNavigate();
   const data = useSelector((state) => state.movielist);
   const singleData = useSelector((state) => state.singleMovieData);
   const signedIn = useSelector((state) => state.registeredUser);
@@ -39,11 +40,12 @@ function SingleMovie() {
 
   // console.log(singleImage);
   console.log(location);
+  let bookmarked = [];
 
   useEffect(() => {
     dispatch(
       loadMovieList(
-        `https://imdb-api.com/en/API/Title/k_nrcppo4w/${location.state}`
+        `https://imdb-api.com/en/API/Title/k_fulo16js/${location.state}`
       )
     );
   }, [id]);
@@ -55,23 +57,24 @@ function SingleMovie() {
   const watchlist = (user) => {
     console.log(signedIn);
     if (!(signedIn.toString().trim() === "")) {
-      console.log(user);
-      console.log(signedIn);
-      localStorageList.push(user);
-      console.log(localStorageList);
+      let duplicate = false;
+      localStorageList.forEach((item) => {
+        // bookmarked.push(item.id);
+        if (item.id === user.id) {
+          duplicate = true;
+          console.log("dupliocate");
+          console.log(duplicate);
+        }
+      });
 
-      localStorage.setItem(signedIn, JSON.stringify(localStorageList));
-      // setErrorMEssage(false);
-
-      // setErrorMEssage(false);
+      if (duplicate === false) {
+        localStorageList.push(user);
+        localStorage.setItem(signedIn, JSON.stringify(localStorageList));
+      }
     } else {
-      // setErrorMEssage(true);
+      navigate("/register");
     }
   };
-
-  // console.log(location);
-
-  // const style = { color: "black", fontSize: "28px" };
 
   var genre;
   var cast;
@@ -258,15 +261,12 @@ function SingleMovie() {
                   className="SingleMovie-info watchlist-bookmark"
                   style={{ width: "40%" }}
                 >
-                  <div
-                    className="See-Showtime"
-                    onClick={() => watchlist(...data)}
-                  >
+                  <div className="See-Showtime">
                     <FontAwesomeIcon icon={faPlus} size="md" />
                     {"  "}
                     See Showtime
                   </div>
-                  <div className="Watchlist">
+                  <div className="Watchlist" onClick={() => watchlist(...data)}>
                     <span>
                       <FontAwesomeIcon icon={faPlus} size="md" />
                       {"  "}

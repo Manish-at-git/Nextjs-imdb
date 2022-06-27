@@ -1,7 +1,7 @@
 const fetchSearch = async (title) => {
   console.log(title, "saga");
   const response = await fetch(
-    `https://imdb-api.com/en/API/SearchTitle/k_nrcppo4w/${title}`
+    `https://imdb-api.com/en/API/SearchTitle/k_fulo16js/${title}`
   );
   const data = await response.json();
   if (response.status >= 400) {
