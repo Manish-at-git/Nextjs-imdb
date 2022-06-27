@@ -2,48 +2,20 @@ import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Alert } from "react-bootstrap";
 
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import "./Authentication.css";
-import {
-  addCollectionAndDocuments,
-  auth,
-  createUserDocumentFromAuth,
-  db,
-} from "../../firebase/firebase-config";
-
-import {
-  getFirestore,
-  doc,
-  getDoc,
-  setDoc,
-  collection,
-  writeBatch,
-  query,
-  getDocs,
-} from "firebase/firestore";
+import { auth } from "../../firebase/firebase-config";
 
 import { useDispatch, useSelector } from "react-redux";
-import { loadSignIn, loadSignOut } from "../../redux/actions";
+import { loadSignIn } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
-import { DATA } from "../../firebase/data";
 
 let errorMsg;
 
 function Authentication() {
-  const nav = useNavigate();
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state.register);
-  // const singleImage = useSelector((state) => state.singleMovieImage);
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
@@ -56,10 +28,6 @@ function Authentication() {
       setUserLogged(user);
     });
   }, []);
-
-  // useEffect(() => {
-  //   addCollectionAndDocuments("categories", DATA);
-  // }, []);
 
   const showError = (error) => {
     let authError = error.message;
@@ -77,22 +45,15 @@ function Authentication() {
         loginEmail,
         loginPassword
       );
-      createUserDocumentFromAuth(user);
-      let setDoc = db.collection("cities").doc("LA").set("data");
-      // addCollectionAndDocuments("categories", DATA);
+
       console.log(user);
       setShow(false);
-      // navigate("/");
-      // dispatch(loadSignIn(userLogged.email));
+      navigate("/");
     } catch (error) {
       showError(error);
 
       setShow(true);
     }
-  };
-
-  const logout = async () => {
-    await signOut(auth);
   };
 
   return (

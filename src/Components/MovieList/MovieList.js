@@ -12,9 +12,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as thinStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { Alert } from "react-bootstrap";
 
 function MovieList() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [errorMessage, setErrorMEssage] = useState(false);
 
   const location = useLocation();
   const datalist = useSelector((state) => state.images);
@@ -24,17 +26,24 @@ function MovieList() {
 
   let data = Array.from(datalist);
 
-  const [users, setUsers] = useState(data[0].items);
+  const [sortDirection, setsortDirection] = useState("Ranking");
 
   useEffect(() => {
     dispatch(loadMovieList(location.state.url));
-    var list = data[0].items;
-    setUsers(list);
-  }, [data[0].items]);
+  }, [location.state.url]);
 
-  console.log(location.state.url);
+  // console.log(location.state.url);
+  const showError = (error) => {
+    let authError = error.message;
+    let errorSplit = authError.split("/");
+    let errorSplitString = errorSplit[1].toString();
+    let errorMessageList = errorSplitString.split(")");
+    let errorMsg = errorMessageList[0].toString();
+    setErrorMEssage(errorMsg);
+  };
 
-  var sorted;
+  let list;
+  let signInError;
 
   const watchlist = (user) => {
     console.log(signedIn);
@@ -44,29 +53,100 @@ function MovieList() {
       localStorageList.push(user);
       console.log(localStorageList);
       localStorage.setItem(signedIn, JSON.stringify(localStorageList));
+      setErrorMEssage(false);
     } else {
-      console.log("error");
+      setErrorMEssage(true);
     }
   };
-  // try {
-  //   list =
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  try {
+    // console.log(users);
+    list = data[0].items
+      .sort((a, b) => {
+        return sortDirection === "Ranking" ? a.rank - b.rank : a.year - b.year;
+      })
+      .slice(0, 20)
+      .filter((user) => {
+        if (searchTerm == "") {
+          return user;
+        } else if (
+          user.title
+            .trim()
+            .toLowerCase()
+            .includes(searchTerm.trim().toLowerCase())
+        ) {
+          return user;
+        }
+      })
+      .map((user) => (
+        <tr>
+          <td>
+            <img
+              className="table-image"
+              src={user.image}
+              style={{ width: "50px" }}
+            />
+            <small className="table-row">
+              {user.rank}.{" "}
+              <NavLink
+                to={`/title/${user.id}`}
+                state={user.id}
+                className="MovieList-NavLink"
+              >
+                <span className="blueName">{user.title}</span>
+              </NavLink>
+              {/* <small>`${user.year}`</small> */}
+              <small style={{ fontSize: "0.9em" }}>{`(${user.year})`}</small>
+              {console.log(user.id)}
+            </small>
+          </td>
+          <td
+            style={{
+              fontSize: "0.8rem",
+            }}
+          >
+            <FontAwesomeIcon
+              icon={solidStar}
+              style={{
+                color: "#f5c518",
+                padding: "0 5px",
+              }}
+              size="lg"
+            />
+            <b>{user.imDbRating}</b>
+          </td>
+          <td>
+            <FontAwesomeIcon
+              icon={thinStar}
+              style={{ color: "grey", opacity: "0.5" }}
+            />
+          </td>
+          <td>
+            <FontAwesomeIcon
+              icon={faPlus}
+              style={{ color: "grey", cursor: "pointer" }}
+              onClick={() => watchlist(user)}
+            />
+          </td>
+        </tr>
+      ));
+  } catch (error) {
+    console.log(error);
+  }
 
   const sortByYear = (e) => {
     const sortDirection = e.target.value;
-    const copyArray = [...data[0].items];
 
-    copyArray.sort((a, b) => {
-      return sortDirection === "Ranking" ? a.rank - b.rank : a.year - b.year;
-    });
-    setUsers(copyArray);
+    setsortDirection(sortDirection);
   };
 
   return (
     <div className="MovieList">
       <div className="container MovieList-container">
+        {errorMessage && (
+          <Alert variant="danger">
+            <Alert.Heading>Please Sign in to bookmark</Alert.Heading>
+          </Alert>
+        )}
         <div className="MovieList-main">
           <div className="MovieList-page">
             <div className="MovieList-headerpage">
@@ -144,75 +224,7 @@ function MovieList() {
                     </th>
                     <th></th>
                   </tr>
-                  {users
-                    .slice(0, 20)
-                    .filter((user) => {
-                      if (searchTerm == "") {
-                        console.log(user);
-                        return user;
-                      } else if (
-                        user.title
-                          .trim()
-                          .toLowerCase()
-                          .includes(searchTerm.trim().toLowerCase())
-                      ) {
-                        return user;
-                      }
-                    })
-                    .map((user) => (
-                      <tr>
-                        <td>
-                          <img
-                            className="table-image"
-                            src={user.image}
-                            style={{ width: "50px" }}
-                          />
-                          <small className="table-row">
-                            {user.rank}.{" "}
-                            <NavLink
-                              to={`/title/${user.id}`}
-                              state={user.id}
-                              className="MovieList-NavLink"
-                            >
-                              <span className="blueName">{user.title}</span>
-                            </NavLink>
-                            {/* <small>`${user.year}`</small> */}
-                            <small
-                              style={{ fontSize: "0.9em" }}
-                            >{`(${user.year})`}</small>
-                            {console.log(user.id)}
-                          </small>
-                        </td>
-                        <td
-                          style={{
-                            fontSize: "0.8rem",
-                          }}
-                        >
-                          <FontAwesomeIcon
-                            icon={solidStar}
-                            style={{
-                              color: "#f5c518",
-                              padding: "0 5px",
-                            }}
-                            size="lg"
-                          />
-                          <b>{user.imDbRating}</b>
-                        </td>
-                        <td>
-                          <FontAwesomeIcon
-                            icon={thinStar}
-                            style={{ color: "grey", opacity: "0.5" }}
-                          />
-                        </td>
-                        <td>
-                          <FontAwesomeIcon
-                            icon={faPlus}
-                            style={{ color: "grey", cursor: "pointer" }}
-                            onClick={() => watchlist(user)}
-                          />
-                        </td>
-                      </tr>
-                    ))}
+                  {list}
                 </table>
               </div>
             </div>

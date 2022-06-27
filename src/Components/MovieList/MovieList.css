@@ -161,4 +161,5 @@ tr:nth-child(even) {
 
 .MovieList-NavLink {
   text-decoration: none;
+  /* color: rgb(216, 169, 169) */
 }
