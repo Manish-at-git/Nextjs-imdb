@@ -3,10 +3,12 @@ import React from "react";
 // import Grid from "../Grid/Grid";
 import MoviePick from "../MoviePick/MoviePick";
 import SignIn from "../SignIn/SignIn";
+import { useLocation } from "react-router";
 // import SingleMovie from "../SingleMovie/SingleMovie";
 // import Slider from "../Slider/Slider";
 
 function Home() {
+  // const useLocation
   return (
     <div>
       {/* <Grid /> */}

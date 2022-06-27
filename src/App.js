@@ -13,6 +13,8 @@ import configureStore from "./redux/store/store";
 import Grid from "./Components/Grid/Grid";
 import SingleMovie from "./Components/SingleMovie/SingleMovie";
 import Authentication from "./Components/Authentication/Authentication";
+import Register from "./Components/Authentication/register";
+import Watchlist from "./Components/Watchlist/Watchlist";
 const store = configureStore();
 
 function App() {
@@ -28,7 +30,9 @@ function App() {
             {/* <Route path="popular" element={<MovieList />} /> */}
             <Route path="grid" element={<Grid />} />
             <Route path="/title/:id" element={<SingleMovie />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/signin" element={<Authentication />} />
+            <Route path="/watchlist" element={<Watchlist />} />
           </Routes>
         </BrowserRouter>
       </Fragment>

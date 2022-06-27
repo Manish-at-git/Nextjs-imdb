@@ -4,37 +4,20 @@ import { Alert } from "react-bootstrap";
 
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  //   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut,
+  //   signOut,
 } from "firebase/auth";
-import "./Authentication.css";
-import {
-  addCollectionAndDocuments,
-  auth,
-  createUserDocumentFromAuth,
-  db,
-} from "../../firebase/firebase-config";
-
-import {
-  getFirestore,
-  doc,
-  getDoc,
-  setDoc,
-  collection,
-  writeBatch,
-  query,
-  getDocs,
-} from "firebase/firestore";
+import "./register.css";
+import { auth } from "../../firebase/firebase-config";
 
 import { useDispatch, useSelector } from "react-redux";
 import { loadSignIn, loadSignOut } from "../../redux/actions";
-import { useNavigate } from "react-router-dom";
-import { DATA } from "../../firebase/data";
+import { useNavigate, NavLink } from "react-router-dom";
 
 let errorMsg;
 
-function Authentication() {
+function Register() {
   const nav = useNavigate();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.register);
@@ -44,8 +27,8 @@ function Authentication() {
 
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  //   const [loginEmail, setLoginEmail] = useState("");
+  //   const [loginPassword, setLoginPassword] = useState("");
 
   const [userLogged, setUserLogged] = useState({});
   const [show, setShow] = useState(false);
@@ -57,10 +40,6 @@ function Authentication() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   addCollectionAndDocuments("categories", DATA);
-  // }, []);
-
   const showError = (error) => {
     let authError = error.message;
     let errorSplit = authError.split("/");
@@ -69,31 +48,43 @@ function Authentication() {
     errorMsg = errorMessageList[0].toString();
     setErrorMEssage(errorMsg);
   };
-
-  const login = async () => {
+  const register = async () => {
     try {
-      const { user } = await signInWithEmailAndPassword(
+      const user = await createUserWithEmailAndPassword(
         auth,
-        loginEmail,
-        loginPassword
+        registerEmail,
+        registerPassword
       );
-      createUserDocumentFromAuth(user);
-      let setDoc = db.collection("cities").doc("LA").set("data");
-      // addCollectionAndDocuments("categories", DATA);
       console.log(user);
       setShow(false);
-      // navigate("/");
-      // dispatch(loadSignIn(userLogged.email));
+      //   navigate("/");
     } catch (error) {
       showError(error);
-
       setShow(true);
     }
   };
 
-  const logout = async () => {
-    await signOut(auth);
-  };
+  //   const login = async () => {
+  //     try {
+  //       const user = await signInWithEmailAndPassword(
+  //         auth,
+  //         loginEmail,
+  //         loginPassword
+  //       );
+  //       console.log(user);
+  //       setShow(false);
+  //       navigate("/");
+  //       // dispatch(loadSignIn(userLogged.email));
+  //     } catch (error) {
+  //       showError(error);
+
+  //       setShow(true);
+  //     }
+  //   };
+
+  //   const logout = async () => {
+  //     await signOut(auth);
+  //   };
 
   return (
     <div className="Auth">
@@ -101,36 +92,44 @@ function Authentication() {
         <Row className="auth-row">
           <Col lg={3}>
             <div className="Authentication">
-              <div className="Login">
-                <h5 className="login-user"> Login </h5>
+              <div className="Register">
+                <h5 className="register-user"> Create Account Register</h5>
                 <input
                   className="auth-email"
                   placeholder="Email..."
                   onChange={(event) => {
-                    setLoginEmail(event.target.value);
+                    setRegisterEmail(event.target.value);
                   }}
                 />
                 <input
                   className="auth-pass"
                   placeholder="Password..."
                   onChange={(event) => {
-                    setLoginPassword(event.target.value);
+                    setRegisterPassword(event.target.value);
                   }}
                 />
-
-                {console.log(loginEmail)}
+                {/* {console.log(registerEmail, registerPassword)} */}
+                {console.log(errorMessage, "errorMessagejsx")}
                 <button
                   className="auth-button"
                   onClick={() => {
-                    login();
-                    dispatch(loadSignIn(loginEmail));
+                    register();
+                    dispatch(loadSignIn(registerEmail));
                   }}
                 >
                   {" "}
-                  Login
+                  Create User
                 </button>
               </div>
-
+              <hr className="hr" />
+              <div className="already-account">
+                <span>
+                  Already have an account?{" "}
+                  <NavLink to="/signin" className="signin-link">
+                    Sign In
+                  </NavLink>
+                </span>
+              </div>
               <Alert show={show} variant="danger">
                 <Alert.Heading>{errorMessage}</Alert.Heading>
               </Alert>
@@ -142,4 +141,4 @@ function Authentication() {
   );
 }
 
-export default Authentication;
+export default Register;

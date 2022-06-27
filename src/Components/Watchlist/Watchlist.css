@@ -150,8 +150,8 @@ tr {
 }
 
 /* tr:hover {
-  cursor: pointer;
-} */
+    cursor: pointer;
+  } */
 
 tr:nth-child(even) {
   background-color: #f6f6f5;
