@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import Cards from "../Cards/Card";
-// import WhatToWatch from "../WhatToWatch/WhatToWatch";
+import WhatToWatch from "../WhatToWatch/WhatToWatch";
 import ErrorHandler from "../ErrorHander/ErrorHandler";
 
-import { NavLink, useLocation } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
-import "./Grid.css";
-
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink, useLocation } from "react-router-dom";
+
+import "./Grid.css";
 import { loadMovieList } from "../../redux/actions";
 
 function Grid() {
   const location = useLocation();
-  const data = useSelector((state) => state.movielist[0].items);
+  const datalist = useSelector((state) => state.movielist);
   const error = useSelector((state) => state.error);
   const dispatch = useDispatch();
 
@@ -20,17 +20,23 @@ function Grid() {
     dispatch(loadMovieList(location.state));
   }, []);
 
+  let data;
+
+  try {
+    data = datalist[0].items;
+  } catch (Err) {
+    console.log("err");
+  }
+
   console.log(location.state);
 
   return (
     <div className="grid-main">
-      {error ? (
-        <ErrorHandler />
-      ) : (
-        <Container>
-          <Row className="Gallary_Container">
-            <h1 className="grid-heading">What to Watch</h1>
-            {data.map((item) => (
+      <Container>
+        <Row className="Gallary_Container">
+          <h1 className="grid-heading">What to Watch</h1>
+          {data &&
+            data.map((item) => (
               <Col className="Grid-Card">
                 <NavLink
                   to={`/title/${item.id}`}
@@ -41,9 +47,8 @@ function Grid() {
                 </NavLink>
               </Col>
             ))}
-          </Row>
-        </Container>
-      )}
+        </Row>
+      </Container>
     </div>
   );
 }

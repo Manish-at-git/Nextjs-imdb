@@ -1,10 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import { API_KEY } from "../API_KEY";
 import MoviePick from "../Components/MoviePick/MoviePick";
 import SignIn from "../Components/SignIn/SignIn";
 
 function Home() {
+  const signedIn = useSelector((state) => state.registerUser);
+
   return (
     <div>
       <MoviePick
