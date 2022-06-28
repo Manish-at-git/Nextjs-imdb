@@ -1,4 +1,5 @@
 import React from "react";
+import { API_KEY } from "../API_KEY";
 // import Cards from "../Cards/Card";
 // import Grid from "../Grid/Grid";
 import MoviePick from "../Components/MoviePick/MoviePick";
@@ -35,7 +36,7 @@ function Home() {
         title="Top Movies"
         text="TV Shows and Movies just for you"
         // url="https://imdb-api.com/en/API/Top250Movies/k_691fo2uh"
-        url="https://imdb-api.com/en/API/Top250Movies/k_pw119nae"
+        url={`https://imdb-api.com/en/API/Top250Movies/${API_KEY}`}
       />
 
       {/* <Slider /> */}

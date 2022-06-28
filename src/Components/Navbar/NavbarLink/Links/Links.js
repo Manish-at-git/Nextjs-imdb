@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { API_KEY } from "../../../../API_KEY";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -18,7 +19,7 @@ function Links(props) {
           to={item.url}
           state={{
             title: `${item.category}`,
-            url: `https://imdb-api.com/en/API/${item.url}/k_pw119nae`,
+            url: `https://imdb-api.com/en/API/${item.url}/${API_KEY}`,
           }}
           key={id}
         >

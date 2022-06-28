@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { API_KEY } from "../../API_KEY";
 import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
+import ErrorHandler from "../ErrorHander/ErrorHandler";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -37,6 +39,7 @@ function SingleMovie() {
   const isLoading = useSelector((state) => state.isLoading);
   const singleData = useSelector((state) => state.singleMovieData);
   const signedIn = useSelector((state) => state.registeredUser);
+  const error = useSelector((state) => state.error);
   const dispatch = useDispatch();
   let localStorageList = JSON.parse(localStorage.getItem(signedIn)) || [];
 
@@ -52,7 +55,7 @@ function SingleMovie() {
   useEffect(() => {
     dispatch(
       loadMovieList(
-        `https://imdb-api.com/en/API/Title/k_fulo16js/${location.state}`
+        `https://imdb-api.com/en/API/Title/${API_KEY}/${location.state}`
       )
     );
   }, [id]);
@@ -172,6 +175,8 @@ function SingleMovie() {
         >
           <BeatLoader color="#f5c518" cssOverride={override} size={20} />
         </div>
+      ) : error ? (
+        <ErrorHandler />
       ) : (
         <>
           <div className="SingleMovie-main1 container-fluid">

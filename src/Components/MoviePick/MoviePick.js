@@ -19,12 +19,16 @@ import WhatToWatch from "../WhatToWatch/WhatToWatch";
 import Card from "../Cards/Card";
 
 import "./MoviePick.css";
+import ErrorHandler from "../ErrorHander/ErrorHandler";
 
 function MoviePick(props) {
-  const data = useSelector((state) => state.movielist);
+  const datalist = useSelector((state) => state.movielist);
   const isLoading = useSelector((state) => state.isLoading);
+  const error = useSelector((state) => state.error);
 
   const dispatch = useDispatch();
+
+  let data = Array.from(datalist);
 
   const override = {
     display: "block",
@@ -37,11 +41,9 @@ function MoviePick(props) {
     console.log("api");
   }, []);
 
-  // console.log(data);
-  // console.log(isLoading);
   var list;
   try {
-    list = data[0].items.slice(0, 15).map((item) => (
+    list = data[0].items.slice(0, 20).map((item) => (
       <SwiperSlide>
         <NavLink to={`/title/${item.id}`} state={item.id} className="NavLink">
           <Card item={item} />
@@ -63,37 +65,40 @@ function MoviePick(props) {
             text={props.text}
             url={props.url}
           />
-
-          <div className="MoviePick-Cards">
-            <Swiper
-              slidesPerView={5}
-              spaceBetween={0}
-              slidesPerGroup={2}
-              loop={false}
-              loopFillGroupWithBlank={false}
-              navigation={true}
-              modules={[Pagination, Navigation]}
-              className="mySwiper"
-            >
-              {isLoading ? (
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <BeatLoader
-                    color="#f5c518"
-                    cssOverride={override}
-                    size={20}
-                  />
-                </div>
-              ) : (
-                list
-              )}
-            </Swiper>
-          </div>
+          {error ? (
+            <ErrorHandler />
+          ) : (
+            <div className="MoviePick-Cards">
+              <Swiper
+                slidesPerView={5}
+                spaceBetween={0}
+                slidesPerGroup={2}
+                loop={false}
+                loopFillGroupWithBlank={false}
+                navigation={true}
+                modules={[Pagination, Navigation]}
+                className="mySwiper"
+              >
+                {isLoading ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <BeatLoader
+                      color="#f5c518"
+                      cssOverride={override}
+                      size={20}
+                    />
+                  </div>
+                ) : (
+                  list
+                )}
+              </Swiper>
+            </div>
+          )}
         </div>
       </div>
     </div>

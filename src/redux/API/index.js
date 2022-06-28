@@ -1,5 +1,5 @@
 const fetchImages = async (url) => {
-  console.log(url, "saga");
+  // console.log(url, "saga");
   const response = await fetch(url);
   const data = await response.json();
   if (response.status >= 400) {

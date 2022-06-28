@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Cards from "../Cards/Card";
 import WhatToWatch from "../WhatToWatch/WhatToWatch";
+import ErrorHandler from "../ErrorHander/ErrorHandler";
 
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
@@ -13,6 +14,7 @@ function Grid() {
   const location = useLocation();
   // console.log(location);
   const data = useSelector((state) => state.movielist[0].items);
+  const error = useSelector((state) => state.error);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,22 +25,26 @@ function Grid() {
 
   return (
     <div className="grid-main">
-      <Container>
-        <Row className="Gallary_Container">
-          <h1 className="grid-heading">What to Watch</h1>
-          {data.map((item) => (
-            <Col className="Grid-Card">
-              <NavLink
-                to={`/title/${item.id}`}
-                state={item.id}
-                className="NavLink"
-              >
-                <Cards item={item} />
-              </NavLink>
-            </Col>
-          ))}
-        </Row>
-      </Container>
+      {error ? (
+        <ErrorHandler />
+      ) : (
+        <Container>
+          <Row className="Gallary_Container">
+            <h1 className="grid-heading">What to Watch</h1>
+            {data.map((item) => (
+              <Col className="Grid-Card">
+                <NavLink
+                  to={`/title/${item.id}`}
+                  state={item.id}
+                  className="NavLink"
+                >
+                  <Cards item={item} />
+                </NavLink>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      )}
     </div>
   );
 }

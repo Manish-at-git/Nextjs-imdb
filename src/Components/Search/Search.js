@@ -4,6 +4,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 import "./Search.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import ErrorHandler from "../ErrorHander/ErrorHandler";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
@@ -15,6 +16,7 @@ function Search(props) {
     borderColor: "red",
   };
   const isLoading = useSelector((state) => state.isLoading);
+  const error = useSelector((state) => state.error);
   let SeacrhData;
   let errorData;
   console.log(props);
@@ -46,7 +48,9 @@ function Search(props) {
   }
   return (
     <Container className="SearchPop">
-      {isLoading ? (
+      {error ? (
+        <ErrorHandler />
+      ) : isLoading ? (
         <div
           style={{
             height: "400px",
