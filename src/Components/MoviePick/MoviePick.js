@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import BeatLoader from "react-spinners/BeatLoader";
+import ErrorHandler from "../ErrorHander/ErrorHandler";
+import WhatToWatch from "../WhatToWatch/WhatToWatch";
+import Card from "../Cards/Card";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { loadMovieList } from "../../redux/actions";
@@ -13,13 +17,7 @@ import { Pagination, Navigation } from "swiper";
 
 import { useSelector, useDispatch } from "react-redux";
 
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import WhatToWatch from "../WhatToWatch/WhatToWatch";
-import Card from "../Cards/Card";
-
 import "./MoviePick.css";
-import ErrorHandler from "../ErrorHander/ErrorHandler";
 
 function MoviePick(props) {
   const datalist = useSelector((state) => state.movielist);

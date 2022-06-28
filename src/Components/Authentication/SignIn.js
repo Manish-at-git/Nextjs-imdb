@@ -3,12 +3,13 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Alert } from "react-bootstrap";
 
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import "./SignIn.css";
 import { auth } from "../../firebase/firebase-config";
 
 import { useDispatch, useSelector } from "react-redux";
 import { loadSignIn } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
+
+import "./SignIn.css";
 
 let errorMsg;
 

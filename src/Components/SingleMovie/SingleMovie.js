@@ -110,29 +110,9 @@ function SingleMovie() {
     imDbRating = data[0].imDbRating;
     title = data[0].title;
     trailer = singleData[0].trailerdata.linkEmbed;
-  } catch (error) {
-    console.log(error);
-  }
-  try {
     genre = data[0].genreList;
-    console.log(genre);
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
     cast = data[0].actorList;
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
     similars = data[0].similars;
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
     images = singleData[0].imagesData.items;
   } catch (error) {
     console.log(error);
@@ -215,9 +195,10 @@ function SingleMovie() {
                 </div>
                 <div className="SingleMovie-trailer card-element">
                   <div className="embed-responsive embed-responsive-4by3">
-                    <iframe className="embed-responsive-item" src={trailer}>
-                      {/* {console.log(trailer)} */}
-                    </iframe>
+                    <iframe
+                      className="embed-responsive-item"
+                      src={trailer}
+                    ></iframe>
                   </div>
                 </div>
                 <div className="SingleMovie-media card-element ">

@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { API_KEY } from "../../../../API_KEY";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./Links.css";
 
 function Links(props) {

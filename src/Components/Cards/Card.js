@@ -1,8 +1,6 @@
 import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as thinStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
@@ -10,11 +8,12 @@ import { faPlus as Plus } from "@fortawesome/free-solid-svg-icons";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./Card.css";
+
 import { useSelector } from "react-redux";
 
 function Cards(props) {
-  // console.log(props.item.title);
   const signedIn = useSelector((state) => state.registeredUser);
   let localStorageList = JSON.parse(localStorage.getItem(signedIn)) || [];
 

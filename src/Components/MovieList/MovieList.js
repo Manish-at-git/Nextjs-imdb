@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
+import BeatLoader from "react-spinners/BeatLoader";
+import ErrorHandler from "../ErrorHander/ErrorHandler";
+import Categories from "./Categories/Categories";
+
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import BeatLoader from "react-spinners/BeatLoader";
 
 import "./MovieList.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ErrorHandler from "../ErrorHander/ErrorHandler";
 
 import image from "../../assets/images/share.png";
-import { loadMovieList } from "../../redux/actions";
 
-import Categories from "./Categories/Categories";
+import { loadMovieList } from "../../redux/actions";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as thinStar } from "@fortawesome/free-regular-svg-icons";
@@ -100,7 +101,6 @@ function MovieList() {
             height: "100vh",
             display: "flex",
             justifyContent: "center",
-            // alignItems: "center",
             paddingTop: "300px",
           }}
         >
@@ -200,7 +200,6 @@ function MovieList() {
                         </th>
                         <th></th>
                       </tr>
-                      {/* {list} */}
                       {items &&
                         items
                           .sort((a, b) => {
@@ -239,7 +238,6 @@ function MovieList() {
                                       {user.title}
                                     </span>
                                   </NavLink>
-                                  {/* <small>`${user.year}`</small> */}
                                   <small
                                     style={{ fontSize: "0.9em" }}
                                   >{`(${user.year})`}</small>

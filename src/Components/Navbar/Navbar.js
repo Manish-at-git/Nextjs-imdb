@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Navbar.css";
 
 import { NavLink } from "react-router-dom";
 import { auth } from "../../firebase/firebase-config";
@@ -14,12 +15,11 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+// import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import logo from "../../assets/images/logo.png";
 import NavbarLogo2 from "../../assets/images/NavbarLogo2.png";
 
-import "./Navbar.css";
 import NavLinks from "./NavbarLink/NavLinks";
 import Search from "../Search/Search";
 
@@ -27,7 +27,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { loadSearch, loadSignOut } from "../../redux/actions/index";
 import { navbarToggle } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
-import { Nav } from "react-bootstrap";
 
 function Navbar() {
   const toggle = useSelector((state) => state.navbarToggle);

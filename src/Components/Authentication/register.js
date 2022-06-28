@@ -4,12 +4,11 @@ import { Alert } from "react-bootstrap";
 
 import {
   createUserWithEmailAndPassword,
-  //   signInWithEmailAndPassword,
   onAuthStateChanged,
-  //   signOut,
 } from "firebase/auth";
-import "./register.css";
 import { auth } from "../../firebase/firebase-config";
+
+import "./register.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { loadSignIn, loadSignOut } from "../../redux/actions";
@@ -18,17 +17,13 @@ import { useNavigate, NavLink } from "react-router-dom";
 let errorMsg;
 
 function Register() {
-  const nav = useNavigate();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.registeredUser);
-  // const singleImage = useSelector((state) => state.singleMovieImage);
 
   const navigate = useNavigate();
 
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-  //   const [loginEmail, setLoginEmail] = useState("");
-  //   const [loginPassword, setLoginPassword] = useState("");
 
   const [userLogged, setUserLogged] = useState({});
   const [show, setShow] = useState(false);
@@ -57,34 +52,12 @@ function Register() {
       );
       console.log(user);
       setShow(false);
-      //   navigate("/");
+      navigate("/");
     } catch (error) {
       showError(error);
       setShow(true);
     }
   };
-
-  //   const login = async () => {
-  //     try {
-  //       const user = await signInWithEmailAndPassword(
-  //         auth,
-  //         loginEmail,
-  //         loginPassword
-  //       );
-  //       console.log(user);
-  //       setShow(false);
-  //       navigate("/");
-  //       // dispatch(loadSignIn(userLogged.email));
-  //     } catch (error) {
-  //       showError(error);
-
-  //       setShow(true);
-  //     }
-  //   };
-
-  //   const logout = async () => {
-  //     await signOut(auth);
-  //   };
 
   return (
     <div className="Auth">
@@ -108,7 +81,6 @@ function Register() {
                     setRegisterPassword(event.target.value);
                   }}
                 />
-                {/* {console.log(registerEmail, registerPassword)} */}
                 {console.log(errorMessage, "errorMessagejsx")}
                 <button
                   className="auth-button"
