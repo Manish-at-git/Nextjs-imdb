@@ -5,7 +5,7 @@ import createSagaMiddleware from "redux-saga";
 // import logger from 'redux-logger'
 
 import rootReducer from "../reducers/index";
-import watchImagesLoad from "../sagas/imagesSaga";
+import watchImagesLoad from "../sagas/Sagas";
 
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
