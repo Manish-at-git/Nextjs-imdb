@@ -91,73 +91,49 @@ function SingleMovie() {
   var similars;
   var images;
   var trailer;
+  var title;
+  var imDbRating;
+  var image;
+  var plot;
+  var stars;
+  var writers;
+  var directors;
+  var metacriticRating;
+
   try {
+    metacriticRating = data[0].metacriticRating;
+    stars = data[0].stars;
+    writers = data[0].writers;
+    directors = data[0].directors;
+    plot = data[0].plot;
+    image = data[0].image;
+    imDbRating = data[0].imDbRating;
+    title = data[0].title;
     trailer = singleData[0].trailerdata.linkEmbed;
   } catch (error) {
     console.log(error);
   }
   try {
-    genre = data[0].genreList.map((item) => (
-      <span className="categories-action">{item.value}</span>
-    ));
+    genre = data[0].genreList;
     console.log(genre);
   } catch (error) {
     console.log(error);
   }
 
   try {
-    cast = data[0].actorList.slice(0, 8).map((item) => (
-      <div style={{ padding: "10px" }}>
-        <div className="Cast-item inline">
-          <img
-            src={item.image}
-            style={{
-              width: "100px",
-              height: "100px",
-              objectFit: "cover",
-              borderRadius: "50%",
-              marginRight: "10px",
-            }}
-          />
-        </div>
-        <div className="cast-img inline">
-          <div className="Cast-Name">{item.name}</div>
-          <div className="Cast-desc">{item.asCharacter.slice(0, 40)}</div>
-        </div>
-      </div>
-    ));
+    cast = data[0].actorList;
   } catch (error) {
     console.log(error);
   }
 
   try {
-    similars = data[0].similars.slice(0, 8).map((item) => (
-      <NavLink
-        to={`/title/${item.id}`}
-        state={item.id}
-        className="search-NavLink"
-      >
-        <div className="single-sidebar-box">
-          <div className="watched-series">
-            <small className="watched-series-span">{item.title}</small>
-            <small className="created-year-span">{item.imDbRating}</small>
-          </div>
-          <img src={item.image} className="created-year" />
-        </div>
-      </NavLink>
-    ));
+    similars = data[0].similars;
   } catch (error) {
     console.log(error);
   }
 
   try {
-    images = singleData[0].imagesData.items.slice(0, 10).map((item) => (
-      <SwiperSlide>
-        <div className="slider-image">
-          <img src={item.image} />
-        </div>
-      </SwiperSlide>
-    ));
+    images = singleData[0].imagesData.items;
   } catch (error) {
     console.log(error);
   }
@@ -183,7 +159,7 @@ function SingleMovie() {
             <div className="SingleMovie container">
               <div className="SingleMovie-heading d-flex justify-content-between">
                 <div className="SingleMovie-heading-title">
-                  {data ? <h1> {data[0].title}</h1> : <h1>no movie</h1>}
+                  <h1>{title ? title : console.log("no movie")}</h1>
                 </div>
                 <div className="SingleMovie-heading-info">
                   <div className="heading">
@@ -196,7 +172,9 @@ function SingleMovie() {
                       />
                       <span className="rating">
                         {" "}
-                        <span className="boldLarge">{data[0].imDbRating}</span>
+                        <span className="boldLarge">
+                          {imDbRating ? imDbRating : console.log("errro")}
+                        </span>
                         /10
                       </span>
                     </span>
@@ -223,14 +201,17 @@ function SingleMovie() {
                         size="lg"
                         style={{ color: "green" }}
                       />
-                      <span className="rating"> {data[0].imDbRating}</span>
+                      <span className="rating">
+                        {" "}
+                        {imDbRating ? imDbRating : console.log("errro")}
+                      </span>
                     </span>
                   </div>
                 </div>
               </div>
               <div className="SingleMovie-card">
                 <div className="SingleMovie-poster card-element">
-                  <img src={data[0].image} />
+                  <img src={image ? image : console.log("error")} />
                 </div>
                 <div className="SingleMovie-trailer card-element">
                   <div className="embed-responsive embed-responsive-4by3">
@@ -262,22 +243,38 @@ function SingleMovie() {
               </div>
               <div className="info">
                 <div className="SingleMovie-info" style={{ width: "60%" }}>
-                  <div className="categories">{genre}</div>
-                  <div className="description">{data[0].plot}</div>
+                  <div className="categories">
+                    {genre &&
+                      genre.map((item) => (
+                        <span className="categories-action">{item.value}</span>
+                      ))}
+                  </div>
+                  <div className="description">
+                    {plot ? plot : console.log("error")}
+                  </div>
                   <hr className="description-line" />
                   <div className="director">
                     <span className="director-bold">Director</span>
-                    <span className="director-blue"> {data[0].directors}</span>
+                    <span className="director-blue">
+                      {" "}
+                      {directors ? directors : console.log("error")}
+                    </span>
                   </div>
                   <hr className="description-line" />
                   <div className="director">
                     <span className="director-bold">Writer</span>
-                    <span className="director-blue"> {data[0].writers}</span>
+                    <span className="director-blue">
+                      {" "}
+                      {writers ? writers : console.log("error")}
+                    </span>
                   </div>
                   <hr className="description-line" />
                   <div className="director">
                     <span className="director-bold">Stars</span>
-                    <span className="director-blue"> {data[0].stars}</span>
+                    <span className="director-blue">
+                      {" "}
+                      {stars ? stars : console.log("error")}
+                    </span>
                   </div>
                 </div>
                 <div
@@ -316,7 +313,9 @@ function SingleMovie() {
                           className="boldLarge"
                           style={{ backgroundColor: "green", color: "white" }}
                         >
-                          {data[0].metacriticRating}
+                          {metacriticRating
+                            ? metacriticRating
+                            : console.log("error")}
                         </span>
                       </b>
                       Metascore
@@ -349,32 +348,93 @@ function SingleMovie() {
                     modules={[Pagination, Navigation]}
                     className="mySwiper"
                   >
-                    {images}
+                    {images &&
+                      images.slice(0, 10).map((item) => (
+                        <SwiperSlide>
+                          <div className="slider-image">
+                            <img src={item.image} />
+                          </div>
+                        </SwiperSlide>
+                      ))}
                   </Swiper>
                 </div>
 
                 <div>
-                  <div className="gridCast">{cast}</div>
+                  <div className="gridCast">
+                    {cast &&
+                      cast.slice(0, 8).map((item) => (
+                        <div style={{ padding: "10px" }}>
+                          <div className="Cast-item inline">
+                            <img
+                              src={item.image}
+                              style={{
+                                width: "100px",
+                                height: "100px",
+                                objectFit: "cover",
+                                borderRadius: "50%",
+                                marginRight: "10px",
+                              }}
+                            />
+                          </div>
+                          <div className="cast-img inline">
+                            <div className="Cast-Name">{item.name}</div>
+                            <div className="Cast-desc">
+                              {item.asCharacter.slice(0, 40)}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
                 </div>
                 <div className="container">
                   <hr className="description-line" />
                   <div className="director">
                     <span className="director-bold">Director</span>
-                    <span className="director-blue"> {data[0].directors}</span>
+                    <span className="director-blue">
+                      {" "}
+                      {directors ? directors : console.log("error")}
+                    </span>
                   </div>
                   <hr className="description-line" />
                   <div className="director">
                     <span className="director-bold">Writer</span>
-                    <span className="director-blue"> {data[0].writers}</span>
+                    <span className="director-blue">
+                      {" "}
+                      {writers ? writers : console.log("error")}
+                    </span>
                   </div>
                   <hr className="description-line" />
                   <div className="director">
                     <span className="director-bold">Stars</span>
-                    <span className="director-blue"> {data[0].stars}</span>
+                    <span className="director-blue">
+                      {" "}
+                      {stars ? stars : console.log("error")}
+                    </span>
                   </div>
                 </div>
               </div>
-              <div className="single-sidebar">{similars}</div>
+              <div className="single-sidebar">
+                {similars &&
+                  similars.slice(0, 8).map((item) => (
+                    <NavLink
+                      to={`/title/${item.id}`}
+                      state={item.id}
+                      className="search-NavLink"
+                    >
+                      <div className="single-sidebar-box">
+                        <div className="watched-series">
+                          <small className="watched-series-span">
+                            {item.title}
+                          </small>
+                          <small className="created-year-span">
+                            {item.imDbRating}
+                          </small>
+                        </div>
+                        <img src={item.image} className="created-year" />
+                      </div>
+                    </NavLink>
+                  ))}
+              </div>
             </div>
           </div>
         </>

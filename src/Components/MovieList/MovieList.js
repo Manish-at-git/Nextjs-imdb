@@ -33,6 +33,7 @@ function MovieList() {
   let localStorageList = JSON.parse(localStorage.getItem(signedIn)) || [];
 
   let data = Array.from(datalist);
+  let items;
 
   const [sortDirection, setsortDirection] = useState("Ranking");
 
@@ -45,6 +46,12 @@ function MovieList() {
     margin: "0 auto",
     borderColor: "red",
   };
+
+  try {
+    items = data[0].items;
+  } catch (err) {
+    console.log(err);
+  }
 
   const showError = (error) => {
     let authError = error.message;
@@ -194,8 +201,8 @@ function MovieList() {
                         <th></th>
                       </tr>
                       {/* {list} */}
-                      {data[0].items &&
-                        data[0].items
+                      {items &&
+                        items
                           .sort((a, b) => {
                             return sortDirection === "Ranking"
                               ? a.rank - b.rank
