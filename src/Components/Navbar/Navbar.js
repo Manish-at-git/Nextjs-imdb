@@ -36,7 +36,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   let navbarNotToggled = true;
-  console.log(signinData);
+  // console.log(signinData);
 
   const changeState = () => {
     dispatch(navbarToggle(navbarNotToggled));
@@ -45,7 +45,7 @@ function Navbar() {
   console.log(toggle);
   let slide = {};
   toggle ? (slide = { position: "absolute", top: "-100%" }) : (slide = null);
-  // //////////////////////////////////////////////////////////////h
+
   const [search, setSearch] = useState("");
   const debounce = (func) => {
     let timer;
@@ -68,13 +68,12 @@ function Navbar() {
   };
 
   const optimizedVersion = useCallback(debounce(handleChange), []);
-  // //////////////////////////////////////////////////////////////
-  console.log(search);
+  // console.log(search);
 
   const logout = async () => {
     await signOut(auth);
     navigate("/register");
-    console.log("logout");
+    // console.log("logout");
   };
 
   return (
@@ -154,7 +153,7 @@ function Navbar() {
         <NavLinks slide={slide} />
       </div>
       {search ? <Search props={searchdata} /> : null}
-      {console.log(search)}
+      {/* {console.log(search)} */}
       {/* <Search /> */}
     </>
   );

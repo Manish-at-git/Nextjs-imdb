@@ -1,7 +1,7 @@
 import React from "react";
 
 function Cast(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <>
       <div className="Cast-item inline">

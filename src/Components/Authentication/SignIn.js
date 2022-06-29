@@ -47,7 +47,7 @@ function Authentication() {
         loginPassword
       );
 
-      console.log(user);
+      // console.log(user);
       setShow(false);
       navigate("/");
     } catch (error) {
@@ -80,7 +80,7 @@ function Authentication() {
                   }}
                 />
 
-                {console.log(loginEmail)}
+                {/* {console.log(loginEmail)} */}
                 <button
                   className="auth-button"
                   onClick={() => {

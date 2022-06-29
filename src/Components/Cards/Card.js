@@ -20,14 +20,14 @@ function Cards(props) {
   const navigate = useNavigate();
 
   const watchlist = (user) => {
-    console.log(signedIn);
+    // console.log(signedIn);
     if (!(signedIn.toString().trim() === "")) {
       let duplicate = false;
       localStorageList.forEach((item) => {
         if (item.id === user.id) {
           duplicate = true;
-          console.log("dupliocate");
-          console.log(duplicate);
+          // console.log("dupliocate");
+          // console.log(duplicate);
         }
       });
 

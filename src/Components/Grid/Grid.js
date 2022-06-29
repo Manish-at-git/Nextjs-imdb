@@ -24,8 +24,8 @@ function Grid() {
 
   try {
     data = datalist[0].items;
-  } catch (Err) {
-    console.log("err");
+  } catch (err) {
+    console.log(err);
   }
 
   console.log(location.state);

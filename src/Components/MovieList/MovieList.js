@@ -67,14 +67,14 @@ function MovieList() {
   let signInError;
 
   const watchlist = (user) => {
-    console.log(signedIn);
+    // console.log(signedIn);
     if (!(signedIn.toString().trim() === "")) {
       let duplicate = false;
       localStorageList.forEach((item) => {
         if (item.id === user.id) {
           duplicate = true;
-          console.log("dupliocate");
-          console.log(duplicate);
+          // console.log("dupliocate");
+          // console.log(duplicate);
         }
       });
 
@@ -156,6 +156,7 @@ function MovieList() {
                     >
                       <option value="Ranking">Ranking</option>
                       <option value="Release">Release</option>
+                      <option value="Rating">Rating</option>
                     </select>
                     <input
                       type="text"
@@ -203,9 +204,13 @@ function MovieList() {
                       {items &&
                         items
                           .sort((a, b) => {
-                            return sortDirection === "Ranking"
-                              ? a.rank - b.rank
-                              : a.year - b.year;
+                            if (sortDirection === "Ranking") {
+                              return a.rank - b.rank;
+                            } else if (sortDirection === "Rating") {
+                              return b.imDbRating - a.imDbRating;
+                            } else {
+                              return a.year - b.year;
+                            }
                           })
                           .filter((user) => {
                             if (searchTerm == "") {

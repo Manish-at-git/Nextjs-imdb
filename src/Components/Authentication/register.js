@@ -50,7 +50,7 @@ function Register() {
         registerEmail,
         registerPassword
       );
-      console.log(user);
+      // console.log(user);
       setShow(false);
       navigate("/");
     } catch (error) {
@@ -81,7 +81,7 @@ function Register() {
                     setRegisterPassword(event.target.value);
                   }}
                 />
-                {console.log(errorMessage, "errorMessagejsx")}
+                {/* {console.log(errorMessage, "errorMessagejsx")} */}
                 <button
                   className="auth-button"
                   onClick={() => {

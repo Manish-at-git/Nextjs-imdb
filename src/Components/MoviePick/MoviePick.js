@@ -36,7 +36,7 @@ function MoviePick(props) {
 
   useEffect(() => {
     dispatch(loadMovieList(props.url));
-    console.log("api");
+    // console.log("api");
   }, []);
 
   var list;

@@ -10,7 +10,6 @@ import {
 } from "../actionTypes/actionTypes";
 
 const loadSignIn = (payload) => {
-  console.log("url:", payload);
   return {
     type: SIGNIN,
     payload,
@@ -22,7 +21,6 @@ const loadSignOut = () => ({
 });
 
 const loadMovieList = (url) => {
-  console.log("url:", url);
   return {
     type: MOVIELISTDATA.LOAD,
     url,

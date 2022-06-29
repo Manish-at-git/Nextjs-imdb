@@ -96,7 +96,7 @@ function Watchlist() {
                             <small
                               style={{ fontSize: "0.9em" }}
                             >{`(${user.year})`}</small>
-                            {console.log(user.id)}
+                            {/* {console.log(user.id)} */}
                           </small>
                         </td>
                         <td

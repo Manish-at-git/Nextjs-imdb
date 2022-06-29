@@ -20,7 +20,7 @@ function Search(props) {
   const error = useSelector((state) => state.error);
   let SeacrhData;
   let errorData;
-  console.log(props);
+  // console.log(props);
   try {
     SeacrhData = props.props[0].results;
   } catch (error) {
@@ -65,7 +65,7 @@ function Search(props) {
           </>
         ))
       ) : (
-        console.log("errro")
+        console.log("error")
       )}
     </Container>
   );

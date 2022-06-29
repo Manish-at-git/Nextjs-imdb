@@ -24,7 +24,6 @@ import {
 
 function* handleImagesLoad(action) {
   try {
-    // console.log("action.url", action.url);
     let url = action.url;
     const data = yield call(fetchImages, url);
     yield put(setMovieList(data));
@@ -36,7 +35,6 @@ function* handleImagesLoad(action) {
 function* handleSearchLoad(action) {
   try {
     let title = action.title;
-    // console.log("title", title);
     const data = yield call(fetchSearch, title);
     yield put(setSearchData(data));
   } catch (error) {
@@ -47,7 +45,6 @@ function* handleSearchLoad(action) {
 function* handleLoadSingleMovie(action) {
   try {
     let id = action.id;
-    // console.log("id", id);
     const data = yield call(singleMovieImages, id);
     yield put(setSingleImagesData(data));
   } catch (error) {

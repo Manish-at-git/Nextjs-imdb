@@ -44,7 +44,7 @@ function SingleMovie() {
   let localStorageList = JSON.parse(localStorage.getItem(signedIn)) || [];
 
   // console.log(singleImage);
-  console.log(location);
+  // console.log(location);
   let bookmarked = [];
   const override = {
     display: "block",
@@ -65,15 +65,15 @@ function SingleMovie() {
   }, [id]);
 
   const watchlist = (user) => {
-    console.log(signedIn);
+    // console.log(signedIn);
     if (!(signedIn.toString().trim() === "")) {
       let duplicate = false;
       localStorageList.forEach((item) => {
         // bookmarked.push(item.id);
         if (item.id === user.id) {
           duplicate = true;
-          console.log("dupliocate");
-          console.log(duplicate);
+          // console.log("dupliocate");
+          // console.log(duplicate);
         }
       });
 
