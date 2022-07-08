@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Components/Navbar/Navbar";
 import MovieList from "./Components/MovieList/MovieList";
-import Home from "./Pages/Home";
+import Home from "./WebPage/Home";
 
 import configureStore from "./redux/store/store";
 import Grid from "./Components/Grid/Grid";

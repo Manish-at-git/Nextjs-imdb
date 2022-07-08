@@ -1,0 +1,27 @@
+.ErrorHandler_main {
+  width: "100%";
+  height: "30vh";
+  display: "flex";
+  flex-direction: "column";
+  justify-content: "space-evenly";
+  justify-content: "center";
+  align-items: "center";
+}
+
+.ErrorHandler_error {
+  color: "white";
+  background: "tomato";
+  padding: "8px 30px";
+  border-radius: "3px";
+  /* margin: "20px"; */
+}
+
+.ErrorHandler_link {
+  padding: "8px 18px";
+  border-radius: "3px";
+  /* margin: "20px"; */
+}
+
+.ErrorHandler_navlink {
+  color: "grey";
+}

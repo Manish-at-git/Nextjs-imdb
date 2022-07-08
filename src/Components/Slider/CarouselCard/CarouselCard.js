@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus as Plus } from "@fortawesome/free-solid-svg-icons";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 
-import "./CarouselCard.css";
+import styles from "./CarouselCard.module.css";
 
 function CarouselCard() {
   return (

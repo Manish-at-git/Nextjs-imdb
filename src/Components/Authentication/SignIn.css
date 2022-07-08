@@ -20,27 +20,27 @@
   border-radius: 3px;
 }
 
-.register-user,
-.login-user,
-.logged-user {
+.register_user,
+.login_user,
+.logged_user {
   margin: 10px;
   color: #2e2e2e;
   /* font-weight: 700; */
 }
-.auth-email,
-.auth-pass {
+.auth_email,
+.auth_pass {
   margin: 5px;
   font-size: 0.8em;
   padding: 4px 8px;
 }
 
-.auth-row {
+.auth_row {
   display: flex;
   justify-content: center;
   padding: 30px;
 }
 
-.auth-button {
+.auth_button {
   margin: 5px;
   border: 1px solid #474747;
   background-color: #f5c518;

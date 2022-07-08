@@ -18,7 +18,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 
-import "./Slider.css";
+import styles from "./Slider.module.css";
 import CarouselCard from "./CarouselCard/CarouselCard";
 
 function Slider() {

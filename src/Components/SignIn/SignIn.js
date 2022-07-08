@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./SignIn.css";
+import styles from "./SignIn.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

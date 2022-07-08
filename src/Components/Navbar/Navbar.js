@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Navbar.css";
+import styles from "./Navbar.module.css";
 
 import { NavLink } from "react-router-dom";
 import { auth } from "../../firebase/firebase-config";

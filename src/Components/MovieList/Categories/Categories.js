@@ -1,20 +1,20 @@
 import React from "react";
-import "./Categories.css";
+import styles from "./Categories.module.css";
 function Categories() {
   return (
-    <div className="MovieList-sideBar">
-      <div className="Sidebar-header">
+    <div className={styles.MovieList_sideBar}>
+      <div className={styles.Sidebar_header}>
         <h5>You Have Seen</h5>
         <span>
-          <span className="bold">0</span>/250 (0%)
+          <span className={styles.bold}>0</span>/250 (0%)
         </span>
-        <div className="Sidebar-check">
+        <div className={styles.Sidebar_check}>
           <input type="checkbox" />
           <label>Hide titles I've seen</label>
         </div>
       </div>
-      <hr />
-      <div className="category">
+      <hr className={styles.hr} />
+      <div className={styles.category}>
         <h6>Top Rated Movies by Genre</h6>
         {[
           "Action",
@@ -38,7 +38,7 @@ function Categories() {
           "Thriller",
           "Western",
         ].map((item) => (
-          <small className="categoryList">{item}</small>
+          <small className={styles.categoryList}>{item}</small>
         ))}
       </div>
     </div>

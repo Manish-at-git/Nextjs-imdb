@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import BeatLoader from "react-spinners/BeatLoader";
 import ErrorHandler from "../ErrorHander/ErrorHandler";
 
-import "./Search.css";
+import styles from "./Search.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Container, Row, Col } from "react-bootstrap";

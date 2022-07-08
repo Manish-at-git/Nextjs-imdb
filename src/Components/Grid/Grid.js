@@ -7,7 +7,7 @@ import ErrorHandler from "../ErrorHander/ErrorHandler";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
 
-import "./Grid.css";
+import styles from "./Grid.module.css";
 import { loadMovieList } from "../../redux/actions";
 
 function Grid() {
@@ -31,13 +31,13 @@ function Grid() {
   console.log(location.state);
 
   return (
-    <div className="grid-main">
+    <div className={styles.grid_main}>
       <Container>
-        <Row className="Gallary_Container">
-          <h1 className="grid-heading">What to Watch</h1>
+        <Row className={styles.Gallary_Container}>
+          <h1 className={styles.grid_heading}>What to Watch</h1>
           {data &&
             data.map((item) => (
-              <Col className="Grid-Card">
+              <Col className={styles.Grid_Card}>
                 <NavLink
                   to={`/title/${item.id}`}
                   state={item.id}

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { API_KEY } from "../../../../API_KEY";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Links.css";
+import styles from "./Links.module.css";
 
 function Links(props) {
   const { title, List } = props;

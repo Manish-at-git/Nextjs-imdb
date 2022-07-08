@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadSignIn } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
 
-import "./SignIn.css";
+import styles from "./SignIn.module.css";
 
 let errorMsg;
 
@@ -58,22 +58,22 @@ function Authentication() {
   };
 
   return (
-    <div className="Auth">
+    <div className={styles.Auth}>
       <Container>
-        <Row className="auth-row">
+        <Row className={styles.auth_row}>
           <Col lg={3}>
-            <div className="Authentication">
-              <div className="Login">
-                <h5 className="login-user"> Login </h5>
+            <div className={styles.Authentication}>
+              <div className={styles.Login}>
+                <h5 className={styles.login_user}> Login </h5>
                 <input
-                  className="auth-email"
+                  className={styles.auth_email}
                   placeholder="Email..."
                   onChange={(event) => {
                     setLoginEmail(event.target.value);
                   }}
                 />
                 <input
-                  className="auth-pass"
+                  className={styles.auth_pass}
                   placeholder="Password..."
                   onChange={(event) => {
                     setLoginPassword(event.target.value);
@@ -82,7 +82,7 @@ function Authentication() {
 
                 {/* {console.log(loginEmail)} */}
                 <button
-                  className="auth-button"
+                  className={styles.auth_button}
                   onClick={() => {
                     login();
                     dispatch(loadSignIn(loginEmail));
@@ -93,7 +93,7 @@ function Authentication() {
                 </button>
               </div>
 
-              <Alert show={show} variant="danger">
+              <Alert show={show} variant={styles.danger}>
                 <Alert.Heading>{errorMessage}</Alert.Heading>
               </Alert>
             </div>

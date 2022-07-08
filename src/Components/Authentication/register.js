@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../../firebase/firebase-config";
 
-import "./register.css";
+import styles from "./register.module.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { loadSignIn, loadSignOut } from "../../redux/actions";
@@ -60,22 +60,25 @@ function Register() {
   };
 
   return (
-    <div className="Auth">
+    <div className={styles.Auth}>
       <Container>
-        <Row className="auth-row">
+        <Row className={styles.auth_row}>
           <Col lg={3}>
-            <div className="Authentication">
-              <div className="Register">
-                <h5 className="register-user"> Create Account Register</h5>
+            <div className={styles.Authentication}>
+              <div className={styles.Register}>
+                <h5 className={styles.resgister_user}>
+                  {" "}
+                  Create Account Register
+                </h5>
                 <input
-                  className="auth-email"
+                  className={styles.auth_email}
                   placeholder="Email..."
                   onChange={(event) => {
                     setRegisterEmail(event.target.value);
                   }}
                 />
                 <input
-                  className="auth-pass"
+                  className={styles.auth_pass}
                   placeholder="Password..."
                   onChange={(event) => {
                     setRegisterPassword(event.target.value);
@@ -83,7 +86,7 @@ function Register() {
                 />
                 {/* {console.log(errorMessage, "errorMessagejsx")} */}
                 <button
-                  className="auth-button"
+                  className={styles.auth_button}
                   onClick={() => {
                     register();
                     dispatch(loadSignIn(registerEmail));
@@ -93,11 +96,11 @@ function Register() {
                   Create User
                 </button>
               </div>
-              <hr className="hr" />
-              <div className="already-account">
+              <hr className={styles.hr} />
+              <div className={styles.already_account}>
                 <span>
                   Already have an account?{" "}
-                  <NavLink to="/signin" className="signin-link">
+                  <NavLink to="/signin" className={styles.signin_link}>
                     Sign In
                   </NavLink>
                 </span>

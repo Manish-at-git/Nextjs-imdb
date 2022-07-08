@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import "./Watchlist.css";
+
+import styles from "./Watchlist.module.css";
 
 import image from "../../assets/images/share.png";
 

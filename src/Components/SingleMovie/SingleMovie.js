@@ -27,9 +27,8 @@ import { Pagination, Navigation } from "swiper";
 import { useDispatch, useSelector } from "react-redux";
 import { loadMovieList, loadSingleImages } from "../../redux/actions";
 import WhatToWatch from "../WhatToWatch/WhatToWatch";
-import Cast from "./Cast/Cast";
 
-import "./SingleMovie.css";
+import styles from "./SingleMovie.module.css";
 
 function SingleMovie() {
   const location = useLocation();
@@ -196,6 +195,7 @@ function SingleMovie() {
                 <div className="SingleMovie-trailer card-element">
                   <div className="embed-responsive embed-responsive-4by3">
                     <iframe
+                      // className={styles.iframe}
                       className="embed-responsive-item"
                       src={trailer}
                     ></iframe>

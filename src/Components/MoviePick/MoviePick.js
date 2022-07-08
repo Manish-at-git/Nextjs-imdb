@@ -17,7 +17,8 @@ import { Pagination, Navigation } from "swiper";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import "./MoviePick.css";
+import styles from "./MoviePick.module.css";
+import { Container } from "react-bootstrap";
 
 function MoviePick(props) {
   const datalist = useSelector((state) => state.movielist);
@@ -53,9 +54,9 @@ function MoviePick(props) {
   }
 
   return (
-    <div className="container-fluid" style={{ background: "black" }}>
-      <div className="container MoviePick">
-        <div className="MoviePick-Heading">
+    <Container fluid style={{ background: "black" }}>
+      <Container className={styles.MoviePick}>
+        <div className={styles.MoviePick_Heading}>
           <WhatToWatch
             heading={props.heading}
             recommend={props.recommend}
@@ -66,7 +67,7 @@ function MoviePick(props) {
           {error ? (
             <ErrorHandler />
           ) : (
-            <div className="MoviePick-Cards">
+            <div className={styles.MoviePick_Cards}>
               <Swiper
                 slidesPerView={5}
                 spaceBetween={0}
@@ -98,8 +99,8 @@ function MoviePick(props) {
             </div>
           )}
         </div>
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 }
 

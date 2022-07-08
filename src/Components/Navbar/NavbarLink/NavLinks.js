@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./NavLink.css";
+import styles from "./NavLink.module.css";
 
 import logo from "../../../assets/images/logo-NavbarLink.png";
 import closeButtonNavlink from "../../../assets/images/close-button-NavLink.png";
